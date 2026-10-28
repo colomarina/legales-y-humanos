@@ -1,0 +1,133 @@
+/* Filas separadas por hairlines: el patrón de lista de la dirección visual.
+   La línea va teñida de beige, no gris: así el color de la disciplina está
+   presente siempre, también para quien nunca va a pasar un mouse por encima. */
+.service-row {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: var(--lh-space-md);
+  align-items: baseline;
+  padding-block: var(--lh-space-md);
+  padding-inline: var(--lh-space-xs);
+  margin-inline: calc(var(--lh-space-xs) * -1);
+  border-top: var(--lh-hairline) solid var(--lh-line-warm);
+}
+
+/* Barrido beige desde la izquierda. Se anima `transform`, no `width`: es lo
+   que pide la guía de performance y además da dirección al gesto. */
+.service-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--lh-warm-soft);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--lh-dur) var(--lh-ease);
+}
+
+.service-row:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.service-list .service-row:last-child {
+  border-bottom: var(--lh-hairline) solid var(--lh-line-warm);
+}
+
+.service-row__number {
+  font-family: var(--lh-serif);
+  font-style: italic;
+  font-size: var(--lh-text-lead);
+  color: var(--lh-warm-text);
+}
+
+.service-row__title {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-xs);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.service-row__title span {
+  color: var(--lh-warm);
+}
+
+.service-row__copy {
+  color: var(--lh-muted);
+  font-size: var(--lh-text-sm);
+  line-height: var(--lh-leading-text);
+}
+
+.service-row .arrow {
+  color: var(--lh-muted);
+  font-size: var(--lh-text-lead);
+  transition: color var(--lh-dur) var(--lh-ease);
+}
+
+@media (hover: hover) {
+  .service-row:hover::before {
+    transform: scaleX(1);
+  }
+
+  .service-row:hover .arrow {
+    color: var(--lh-warm-text);
+  }
+}
+
+.service-row:focus-visible .arrow {
+  color: var(--lh-warm-text);
+}
+
+/* ---------- Llamado de cierre ---------- */
+.consulting-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--lh-space-xl);
+  align-items: center;
+  margin-top: clamp(var(--lh-space-xl), 6vw, var(--lh-space-2xl));
+  padding: clamp(var(--lh-space-lg), 4vw, var(--lh-space-xl));
+  background: var(--lh-warm);
+  color: var(--lh-ink);
+}
+
+.consulting-cta .kicker {
+  color: rgba(41, 41, 41, 0.72);
+}
+
+.consulting-cta__title {
+  max-width: 20ch;
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-s);
+  font-weight: 500;
+  line-height: var(--lh-leading-display);
+  letter-spacing: var(--lh-tracking-display);
+  text-wrap: balance;
+}
+
+.consulting-cta__text {
+  max-width: var(--lh-measure);
+  margin-top: var(--lh-space-xs);
+  color: rgba(41, 41, 41, 0.78);
+  font-size: var(--lh-text-sm);
+}
+
+@media (max-width: 900px) {
+  .service-row {
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    row-gap: var(--lh-space-2xs);
+  }
+
+  /* La descripción pasa debajo del título en lugar de desaparecer. */
+  .service-row__copy {
+    grid-column: 2 / 4;
+  }
+
+  .consulting-cta {
+    grid-template-columns: 1fr;
+    gap: var(--lh-space-lg);
+    justify-items: start;
+  }
+}

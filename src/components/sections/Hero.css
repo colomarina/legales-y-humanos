@@ -1,0 +1,146 @@
+.hero {
+  position: relative;
+  min-height: min(100svh, 860px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* El padding superior deja libre la cabecera fija. */
+  padding-block: calc(var(--lh-header-h) + var(--lh-space-2xl)) var(--lh-space-xl);
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--lh-space-sm) var(--lh-space-md);
+  color: var(--lh-muted-invert);
+  font-size: var(--lh-kicker);
+  letter-spacing: var(--lh-tracking-kicker);
+  text-transform: uppercase;
+}
+
+.hero__eyebrow li:not(:last-child)::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: var(--lh-hairline);
+  margin-left: var(--lh-space-md);
+  vertical-align: middle;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.hero__title {
+  margin-top: var(--lh-space-md);
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-xl);
+  font-weight: 500;
+  line-height: 0.76;
+  letter-spacing: -0.055em;
+}
+
+.hero__title i {
+  font-weight: 400;
+  color: var(--lh-warm);
+}
+
+.hero__dot {
+  color: var(--lh-blue);
+}
+
+/* El enunciado se desplaza a la derecha para generar la tensión asimétrica
+   que caracteriza la dirección visual. */
+.hero__statement {
+  max-width: 40rem;
+  margin-top: var(--lh-space-xl);
+  margin-left: auto;
+}
+
+.hero__lead {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-l);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.hero__lead em {
+  color: var(--lh-warm);
+  font-weight: 400;
+}
+
+.hero__description {
+  max-width: 30rem;
+  margin-top: var(--lh-space-md);
+  color: var(--lh-muted-invert);
+  font-size: var(--lh-text-base);
+  line-height: var(--lh-leading-text);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--lh-space-md) var(--lh-space-lg);
+  margin-top: var(--lh-space-lg);
+}
+
+/* Ancladas a la izquierda, no repartidas a lo ancho: con la segunda nota
+   alineada a la derecha caía encima de la barra azul de la geometría, donde
+   el texto quedaba en 1.6:1 e ilegible. */
+.hero__footnotes {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--lh-space-md);
+  margin-top: var(--lh-space-2xl);
+  color: var(--lh-muted-invert);
+  font-size: var(--lh-kicker);
+  letter-spacing: var(--lh-tracking-kicker);
+  text-transform: uppercase;
+}
+
+.hero__rule {
+  flex: none;
+  width: clamp(40px, 8vw, 120px);
+  height: var(--lh-hairline);
+  background: currentColor;
+  opacity: 0.4;
+}
+
+@media (max-width: 900px) {
+  .hero__statement {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero {
+    padding-block: calc(var(--lh-header-h) + var(--lh-space-xl)) var(--lh-space-lg);
+  }
+
+  .hero__title {
+    line-height: 0.82;
+  }
+
+  .hero__statement {
+    margin-top: var(--lh-space-lg);
+  }
+
+  .hero__actions .button {
+    width: 100%;
+  }
+
+  .hero__footnotes {
+    margin-top: var(--lh-space-xl);
+  }
+}

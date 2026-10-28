@@ -1,0 +1,4 @@
+/* Punto de entrada de estilos globales.
+   Los estilos de cada componente se importan desde su propio .tsx. */
+@import './tokens.css';
+@import './base.css';

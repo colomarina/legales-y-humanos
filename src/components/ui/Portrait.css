@@ -1,0 +1,48 @@
+.portrait {
+  margin: 0;
+}
+
+.portrait__frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  display: grid;
+  place-items: center;
+  border: var(--lh-hairline) solid var(--lh-line);
+}
+
+.portrait--rrhh .portrait__frame {
+  background: var(--lh-warm-soft);
+}
+
+.portrait--juridico .portrait__frame {
+  background: var(--lh-blue-soft);
+}
+
+/* Círculo de encuadre: señala dónde irá el rostro sin simular una fotografía. */
+.portrait__mark {
+  width: 52%;
+  aspect-ratio: 1;
+  border: var(--lh-hairline) solid rgba(41, 41, 41, 0.22);
+  border-radius: 50%;
+}
+
+.portrait__caption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lh-space-3xs);
+  margin-top: var(--lh-space-xs);
+  padding-top: var(--lh-space-xs);
+  border-top: var(--lh-hairline) solid var(--lh-line);
+  color: var(--lh-muted);
+  font-size: var(--lh-kicker);
+  letter-spacing: var(--lh-tracking-kicker);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.portrait__caption small {
+  font-size: var(--lh-kicker);
+  letter-spacing: 0.08em;
+  text-transform: none;
+  opacity: 0.8;
+}

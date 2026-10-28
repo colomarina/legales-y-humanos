@@ -1,0 +1,222 @@
+/* El formulario toma el color del recorrido elegido: si consultás como
+   particular, no tiene sentido que el botón de enviar sea el beige de empresas.
+   Un único par de variables alimenta el filete superior, el subrayado de foco,
+   la tilde del consentimiento y el botón. */
+.contact-form {
+  --form-accent: var(--lh-warm);
+  --form-accent-text: var(--lh-warm-text);
+
+  padding: clamp(var(--lh-space-md), 3vw, var(--lh-space-lg));
+  background: var(--lh-neutral);
+  border: var(--lh-hairline) solid var(--lh-line);
+  border-top: 2px solid var(--form-accent);
+  scroll-margin-top: var(--lh-space-xl);
+  transition: border-top-color var(--lh-dur) var(--lh-ease);
+}
+
+.contact-form--juridico {
+  --form-accent: var(--lh-blue);
+  --form-accent-text: var(--lh-blue-text);
+}
+
+/* Nombra el destino de la consulta, en el color del recorrido. */
+.contact-form__intro-text strong {
+  color: var(--form-accent-text);
+  font-weight: 600;
+}
+
+.contact-form__intro {
+  padding-bottom: var(--lh-space-md);
+  border-bottom: var(--lh-hairline) solid var(--lh-line);
+}
+
+.contact-form__intro-text {
+  max-width: var(--lh-measure);
+  color: var(--lh-muted);
+  font-size: var(--lh-text-sm);
+}
+
+.contact-form__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--lh-space-md);
+  margin-top: var(--lh-space-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lh-space-2xs);
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field__label {
+  color: var(--lh-muted);
+  font-size: var(--lh-kicker);
+  font-weight: 500;
+  letter-spacing: var(--lh-tracking-kicker);
+  text-transform: uppercase;
+}
+
+.field__label small {
+  font-size: inherit;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+/* Campos cortos: de línea, para no competir con los hairlines del sistema. */
+.contact-form input:not([type='checkbox']) {
+  width: 100%;
+  padding: var(--lh-space-2xs) 0;
+  background: transparent;
+  border: 0;
+  border-bottom: var(--lh-hairline) solid var(--lh-line-strong);
+  border-radius: 0;
+  font-size: var(--lh-text-base);
+  transition:
+    border-color var(--lh-dur) var(--lh-ease),
+    box-shadow var(--lh-dur) var(--lh-ease);
+}
+
+/* El mensaje no es un campo de línea, es un área: tiene que mostrar cuánto
+   espacio hay para escribir. Con sólo un borde inferior, la marca de foco
+   quedaba a 112px de donde está el cursor y el campo no se leía como campo. */
+.contact-form textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 7rem;
+  padding: var(--lh-space-sm);
+  background: var(--lh-paper);
+  border: var(--lh-hairline) solid var(--lh-line-strong);
+  border-radius: 0;
+  font-size: var(--lh-text-base);
+  transition:
+    border-color var(--lh-dur) var(--lh-ease),
+    box-shadow var(--lh-dur) var(--lh-ease);
+}
+
+/* El foco engrosa con box-shadow y no con border-width: cambiar el ancho del
+   borde corre el contenido un píxel en cada lado. */
+.contact-form input:not([type='checkbox']):focus {
+  outline: none;
+  border-bottom-color: var(--form-accent-text);
+  box-shadow: 0 1px 0 0 var(--form-accent-text);
+}
+
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--form-accent-text);
+  box-shadow: 0 0 0 1px var(--form-accent-text);
+}
+
+/* El foco del teclado conserva el anillo del sistema. */
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: 2px solid var(--lh-focus);
+  outline-offset: 3px;
+}
+
+.contact-form ::placeholder {
+  color: var(--lh-muted);
+}
+
+.field--consent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--lh-space-xs);
+  margin-top: var(--lh-space-2xs);
+  color: var(--lh-muted);
+  font-size: var(--lh-text-xs);
+  line-height: 1.6;
+}
+
+/* ---------- Errores ---------- */
+.field__error {
+  display: block;
+  margin-top: var(--lh-space-3xs);
+  color: var(--lh-error);
+  font-size: var(--lh-text-xs);
+  line-height: 1.5;
+}
+
+/* El error no se señala sólo con color: suma el borde grueso y el texto. */
+.contact-form input[aria-invalid='true']:not([type='checkbox']) {
+  border-bottom-color: var(--lh-error);
+  box-shadow: 0 1px 0 0 var(--lh-error);
+}
+
+.contact-form textarea[aria-invalid='true'] {
+  border-color: var(--lh-error);
+  box-shadow: 0 0 0 1px var(--lh-error);
+}
+
+.contact-form [aria-invalid='true'][type='checkbox'] {
+  outline: 2px solid var(--lh-error);
+  outline-offset: 2px;
+}
+
+.field--consent input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--form-accent-text);
+}
+
+.contact-form__submit {
+  grid-column: 1 / -1;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ---------- Estado de envío ---------- */
+.contact-form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--lh-space-xs);
+  min-height: 18rem;
+  justify-content: center;
+}
+
+.contact-form__success strong {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-s);
+  font-weight: 500;
+  line-height: var(--lh-leading-display);
+  letter-spacing: var(--lh-tracking-display);
+}
+
+.contact-form__success > p {
+  color: var(--lh-muted);
+  font-size: var(--lh-text-sm);
+}
+
+.contact-form__hint {
+  max-width: var(--lh-measure);
+  color: var(--lh-muted);
+  font-size: var(--lh-text-xs);
+  line-height: 1.6;
+}
+
+.contact-form__reset {
+  margin-top: var(--lh-space-sm);
+  padding: var(--lh-space-2xs) 0;
+  background: none;
+  border: 0;
+  border-bottom: var(--lh-hairline) solid currentColor;
+  font-size: var(--lh-text-sm);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .contact-form__fields {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,27 @@
+/* El color sale de `currentColor`, así que el logo se adapta a cualquier plano.
+   Se declara con prefijo y sin prefijo: Safari todavía pide `-webkit-`. */
+.logo {
+  display: block;
+  flex: none;
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* El aspect-ratio es el del PNG ya recortado, para reservar el alto exacto y
+   no provocar salto de maqueta mientras carga. */
+.logo--monograma {
+  aspect-ratio: 332 / 259;
+  -webkit-mask-image: url('/monograma.png');
+  mask-image: url('/monograma.png');
+}
+
+.logo--completo {
+  aspect-ratio: 464 / 180;
+  -webkit-mask-image: url('/logo-completo.png');
+  mask-image: url('/logo-completo.png');
+}

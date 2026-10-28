@@ -1,0 +1,142 @@
+.nosotras__profiles {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--lh-space-xl), 7vw, calc(var(--lh-space-2xl) * 1.4));
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(var(--lh-space-lg), 6vw, var(--lh-space-2xl));
+  align-items: start;
+}
+
+/* El segundo perfil espeja la composición: retrato a la derecha. */
+.profile:nth-child(even) .profile__portrait {
+  order: 2;
+}
+
+.profile__portrait {
+  max-width: 420px;
+}
+
+.profile__body {
+  padding-top: var(--lh-space-2xs);
+}
+
+.profile__discipline {
+  color: var(--lh-warm-text);
+}
+
+.profile--juridico .profile__discipline {
+  color: var(--lh-blue-text);
+}
+
+.profile__name {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-m);
+  font-weight: 500;
+  line-height: var(--lh-leading-display);
+  letter-spacing: var(--lh-tracking-display);
+}
+
+.profile--rrhh .profile__name span {
+  color: var(--lh-warm);
+}
+
+.profile--juridico .profile__name span {
+  color: var(--lh-blue);
+}
+
+.profile__role {
+  margin-top: var(--lh-space-xs);
+  color: var(--lh-muted);
+  font-size: var(--lh-text-sm);
+  letter-spacing: 0.01em;
+}
+
+.profile__quote {
+  max-width: var(--lh-measure);
+  margin: var(--lh-space-md) 0 0;
+  padding-left: var(--lh-space-md);
+  border-left: 2px solid var(--lh-warm);
+  font-family: var(--lh-serif);
+  font-size: var(--lh-text-lead);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.profile--juridico .profile__quote {
+  border-left-color: var(--lh-blue);
+}
+
+.profile__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lh-space-2xs);
+  margin-top: var(--lh-space-md);
+}
+
+.profile__skills li {
+  padding: var(--lh-space-3xs) var(--lh-space-xs);
+  border: var(--lh-hairline) solid var(--lh-line);
+  border-radius: var(--lh-radius-pill);
+  color: var(--lh-muted);
+  font-size: var(--lh-text-xs);
+  line-height: 1.6;
+}
+
+/* ---------- Banner de cierre ---------- */
+.founders-banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--lh-space-lg);
+  margin-top: clamp(var(--lh-space-xl), 7vw, var(--lh-space-2xl));
+  padding: clamp(var(--lh-space-lg), 5vw, var(--lh-space-2xl));
+}
+
+.founders-banner__statement,
+.founders-banner__caption {
+  position: relative;
+  z-index: 2;
+}
+
+.founders-banner__statement {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-m);
+  font-weight: 500;
+  line-height: var(--lh-leading-display);
+  letter-spacing: var(--lh-tracking-display);
+}
+
+.founders-banner__statement em {
+  color: var(--lh-warm);
+  font-weight: 400;
+}
+
+.founders-banner__caption {
+  color: var(--lh-muted-invert);
+  font-size: var(--lh-kicker);
+  letter-spacing: var(--lh-tracking-kicker);
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .profile {
+    grid-template-columns: 1fr;
+    gap: var(--lh-space-lg);
+  }
+
+  /* En una sola columna el retrato vuelve siempre arriba. */
+  .profile:nth-child(even) .profile__portrait {
+    order: 0;
+  }
+
+  .profile__portrait {
+    max-width: 320px;
+  }
+}

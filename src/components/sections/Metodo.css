@@ -1,0 +1,168 @@
+/*
+ * Línea de tiempo: cuatro marcadores circulares unidos por una línea, con el
+ * borde alternando beige (RRHH) y azul (Jurídico). Es el tratamiento de
+ * /estructura, conservado por pedido y traducido a los tokens del sistema.
+ */
+
+.timeline {
+  --marker-size: 56px;
+  --timeline-gap: var(--lh-space-lg);
+  --timeline-cols: 4;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--timeline-cols), minmax(0, 1fr));
+  gap: var(--timeline-gap);
+}
+
+/* Une los centros del primer y el último marcador.
+   Se dibuja al entrar en pantalla: el movimiento comunica la secuencia del
+   proceso, que es lo que hay que entender acá. No hay hover: los pasos no son
+   interactivos, y además el hover no existe en móvil. */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--marker-size) / 2);
+  left: calc(var(--marker-size) / 2);
+  /* Termina en el centro del último marcador, no en el borde del contenedor:
+     la última columna mide (100% - 3 huecos) / 4, así que el margen derecho es
+     esa columna menos medio marcador. Si no, la línea sobresale ~240px. */
+  right: calc(
+    (100% - (var(--timeline-cols) - 1) * var(--timeline-gap)) / var(--timeline-cols) -
+      var(--marker-size) / 2
+  );
+  height: var(--lh-hairline);
+  background: var(--lh-line);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms var(--lh-ease) 150ms;
+}
+
+.timeline.is-visible::before {
+  transform: scaleX(1);
+}
+
+.timeline__step {
+  position: relative;
+}
+
+/* El marcador siempre está; lo que entra en secuencia es su color. Así el
+   contenido nunca se ve incompleto mientras corre la animación. */
+.timeline__marker {
+  display: grid;
+  place-items: center;
+  width: var(--marker-size);
+  height: var(--marker-size);
+  border: var(--lh-hairline) solid var(--lh-line);
+  border-radius: 50%;
+  background: var(--lh-paper);
+  transition: border-color var(--lh-dur) var(--lh-ease);
+}
+
+.timeline.is-visible .timeline__step:nth-child(odd) .timeline__marker {
+  border-color: var(--lh-warm);
+}
+
+.timeline.is-visible .timeline__step:nth-child(even) .timeline__marker {
+  border-color: var(--lh-blue);
+}
+
+.timeline__step:nth-child(1) .timeline__marker {
+  transition-delay: 250ms;
+}
+
+.timeline__step:nth-child(2) .timeline__marker {
+  transition-delay: 450ms;
+}
+
+.timeline__step:nth-child(3) .timeline__marker {
+  transition-delay: 650ms;
+}
+
+.timeline__step:nth-child(4) .timeline__marker {
+  transition-delay: 850ms;
+}
+
+/* Sin movimiento: el estado final, de entrada. */
+@media (prefers-reduced-motion: reduce) {
+  .timeline::before {
+    transform: scaleX(1);
+  }
+
+  .timeline__marker {
+    transition-delay: 0ms;
+  }
+}
+
+.timeline__marker span {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-text-lead);
+}
+
+.timeline__title {
+  margin: var(--lh-space-md) 0 var(--lh-space-2xs);
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-xs);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.timeline__text {
+  max-width: 26ch;
+  color: var(--lh-muted);
+  font-size: var(--lh-text-sm);
+  line-height: var(--lh-leading-text);
+}
+
+/* En una columna la línea se vuelve vertical y el marcador pasa al costado. */
+@media (max-width: 900px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* En vertical la línea se dibuja de arriba hacia abajo. */
+  .timeline::before {
+    top: calc(var(--marker-size) / 2);
+    bottom: calc(var(--marker-size) / 2);
+    left: calc(var(--marker-size) / 2);
+    right: auto;
+    width: var(--lh-hairline);
+    height: auto;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  .timeline.is-visible::before {
+    transform: scaleY(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .timeline::before {
+      transform: scaleY(1);
+    }
+  }
+
+  .timeline__step {
+    display: grid;
+    grid-template-columns: calc(var(--marker-size) + var(--lh-space-md)) 1fr;
+    padding-bottom: var(--lh-space-xl);
+  }
+
+  .timeline__marker {
+    grid-row: 1 / 3;
+  }
+
+  .timeline__title {
+    margin-top: var(--lh-space-3xs);
+  }
+
+  .timeline__text {
+    max-width: 34ch;
+  }
+
+  .timeline__step:last-child {
+    padding-bottom: 0;
+  }
+}

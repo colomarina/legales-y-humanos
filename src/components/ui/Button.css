@@ -1,0 +1,70 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lh-space-lg);
+  min-height: 56px;
+  padding: var(--lh-space-sm) var(--lh-space-md);
+  border: var(--lh-hairline) solid transparent;
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-xs);
+  font-weight: 500;
+  line-height: 1.1;
+  cursor: pointer;
+  transition:
+    background-color var(--lh-dur) var(--lh-ease),
+    color var(--lh-dur) var(--lh-ease),
+    border-color var(--lh-dur) var(--lh-ease);
+}
+
+.button__label {
+  text-wrap: balance;
+}
+
+.button .arrow {
+  font-family: var(--lh-sans);
+  font-size: var(--lh-text-lead);
+}
+
+.button--warm {
+  background: var(--lh-warm);
+  color: var(--lh-ink);
+}
+
+/* El hover oscurece el propio botón en vez de invertirlo a tinta o papel.
+   Invertir funcionaba sobre un solo fondo: sobre el hero oscuro el relleno
+   tinta quedaba a 1.05:1 del plano y el botón se disolvía. La variante `-text`
+   contrasta contra el plano claro y el oscuro por igual. */
+@media (hover: hover) {
+  .button--warm:hover {
+    background: var(--lh-warm-text);
+    color: var(--lh-paper);
+  }
+}
+
+.button--blue {
+  background: var(--lh-blue);
+  color: var(--lh-ink);
+}
+
+@media (hover: hover) {
+  .button--blue:hover {
+    background: var(--lh-blue-text);
+    color: var(--lh-paper);
+  }
+}
+
+/* Contorno claro, para usar sobre planos oscuros o de color saturado. */
+.button--paper {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+
+@media (hover: hover) {
+  .button--paper:hover {
+    background: var(--lh-ink);
+    color: var(--lh-paper);
+    border-color: var(--lh-ink);
+  }
+}
