@@ -1,0 +1,42 @@
+.brand {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: var(--lh-space-xs);
+}
+
+.brand__mark {
+  width: 34px;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.brand__main {
+  font-family: var(--lh-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--lh-tracking-brand);
+  text-transform: uppercase;
+}
+
+.brand__main i {
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+.brand__sub {
+  font-size: 0.625rem;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--lh-muted);
+}
+
+.brand--light .brand__sub {
+  color: var(--lh-muted-invert);
+}

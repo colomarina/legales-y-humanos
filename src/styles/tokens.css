@@ -1,0 +1,105 @@
+/*
+ * Tokens de diseño — Legales y Humanos
+ * -----------------------------------------------------------------------------
+ * Única fuente de verdad del sistema visual (dirección "Boutique Contemporánea").
+ * Ningún componente debería declarar un color, una familia tipográfica ni una
+ * duración de transición por fuera de este archivo.
+ */
+
+:root {
+  /* ---------- Color: planos ---------- */
+  --lh-paper: #faf9f6; /* plano claro base */
+  --lh-deep: #252525; /* plano oscuro */
+  --lh-deep-raised: #2d2d2d; /* plano oscuro elevado (hover sobre oscuro) */
+  --lh-neutral: #f1efeb; /* plano claro secundario */
+
+  /* ---------- Color: texto ---------- */
+  --lh-ink: #292929; /* texto sobre plano claro */
+  --lh-ink-invert: #faf9f6; /* texto sobre plano oscuro */
+  --lh-muted: #6e6b66; /* secundario sobre claro — 5.0:1 */
+  --lh-muted-invert: #bbb7b0; /* secundario sobre oscuro — 8.7:1 */
+
+  /* ---------- Color: líneas ---------- */
+  --lh-line: #d9d5ce; /* hairline sobre claro */
+  --lh-line-warm: rgba(225, 175, 126, 0.55); /* hairline teñido de RRHH */
+  /* Hairline de énfasis y límite de los campos del formulario. Al 0.3 quedaba
+     en 1.8:1 y no llegaba al 3:1 que WCAG 2.2 SC 1.4.11 pide para el límite de
+     un control; al 0.6 da 3.8:1 sobre el fondo del formulario. */
+  --lh-line-strong: rgba(41, 41, 41, 0.6);
+  --lh-line-invert: #585858; /* hairline sobre oscuro */
+
+  /* ---------- Color: acentos de disciplina ---------- */
+  /* Beige = Recursos Humanos · Azul = Jurídico */
+  --lh-warm: #e1af7e;
+  --lh-warm-soft: #f4e4d5;
+  --lh-warm-text: #8a5f2c; /* versión legible sobre papel — 5.3:1 */
+  --lh-blue: #7bb4c2;
+  --lh-blue-soft: #dcebee;
+  --lh-blue-text: #3f707b; /* versión legible sobre papel — 5.2:1 */
+
+  --lh-focus: #e1af7e;
+  /* Error: terracota en lugar de rojo semáforo, para no romper la paleta.
+     5.7:1 sobre el fondo del formulario. Nunca se usa solo — siempre
+     acompañado de texto y de un cambio de borde. */
+  --lh-error: #b3261e;
+
+  /* ---------- Tipografía: familias ---------- */
+  --lh-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --lh-sans: 'Inter', system-ui, -apple-system, Arial, sans-serif;
+
+  /* ---------- Tipografía: escala display (serif) ---------- */
+  --lh-display-xl: clamp(4rem, 11vw, 10.5rem); /* h1 del hero */
+  --lh-display-l: clamp(2.75rem, 6.5vw, 5.75rem); /* enunciado del hero */
+  --lh-display-m: clamp(2.5rem, 5vw, 4.5rem); /* h2 de sección */
+  --lh-display-s: clamp(1.75rem, 2.8vw, 2.5rem); /* h3 destacado */
+  --lh-display-xs: clamp(1.375rem, 1.9vw, 1.75rem); /* título de fila/tarjeta */
+
+  /* ---------- Tipografía: escala de texto (sans) ---------- */
+  /* Nota: la maqueta de Figma usaba 9–11px para texto corrido. La escala se
+     elevó conservando la proporción entre niveles y el carácter editorial.
+     El cuerpo arranca en 16px por dos motivos: es el mínimo recomendado para
+     móvil, y por debajo de ese valor Safari iOS hace zoom automático al
+     enfocar un campo de formulario. */
+  --lh-text-lead: clamp(1.0625rem, 1.3vw, 1.1875rem); /* 17–19px */
+  --lh-text-base: 1rem; /* 16px */
+  --lh-text-sm: 0.9375rem; /* 15px */
+  --lh-text-xs: 0.875rem; /* 14px */
+  --lh-kicker: 0.75rem; /* 12px — overlines en mayúsculas */
+
+  /* ---------- Tipografía: métricas ---------- */
+  --lh-leading-display: 0.9;
+  --lh-leading-text: 1.7;
+  --lh-tracking-display: -0.04em;
+  --lh-tracking-kicker: 0.16em;
+  --lh-tracking-brand: 0.02em;
+
+  /* ---------- Espaciado ---------- */
+  --lh-space-3xs: 0.25rem;
+  --lh-space-2xs: 0.5rem;
+  --lh-space-xs: 0.75rem;
+  --lh-space-sm: 1rem;
+  --lh-space-md: 1.5rem;
+  --lh-space-lg: 2.25rem;
+  --lh-space-xl: 3.5rem;
+  --lh-space-2xl: 5rem;
+
+  /* Alto de la cabecera fija: completo sobre el hero, compacto al bajar. */
+  --lh-header-h: 88px;
+  --lh-header-h-compact: 68px;
+
+  /* Ritmo vertical de las secciones y margen lateral del contenido */
+  --lh-section-y: clamp(4.5rem, 8vw, 7.5rem);
+  --lh-gutter: clamp(1.5rem, 5vw, 5.5rem);
+  --lh-measure: 34rem; /* ancho máximo de texto corrido */
+  --lh-maxw: 1440px;
+
+  /* ---------- Formas ---------- */
+  --lh-radius-pill: 999px;
+  --lh-hairline: 1px;
+
+  /* ---------- Movimiento ---------- */
+  --lh-dur-fast: 180ms;
+  --lh-dur: 320ms;
+  --lh-dur-slow: 700ms;
+  --lh-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}

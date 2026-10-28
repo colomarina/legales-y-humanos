@@ -1,0 +1,53 @@
+/* Encabezado de sección a dos columnas: numeración a la izquierda, enunciado
+   a la derecha. Es el patrón que ordena todas las secciones del sitio. */
+.section-intro {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.4fr) 1.6fr;
+  gap: clamp(var(--lh-space-md), 6vw, var(--lh-space-2xl));
+  align-items: start;
+  margin-bottom: clamp(var(--lh-space-xl), 6vw, var(--lh-space-2xl));
+}
+
+.section-intro__number {
+  padding-top: 0.6em;
+  color: var(--lh-muted);
+  font-size: var(--lh-kicker);
+  letter-spacing: var(--lh-tracking-kicker);
+  text-transform: uppercase;
+}
+
+.section-intro__title {
+  max-width: 18ch;
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-m);
+  font-weight: 500;
+  line-height: var(--lh-leading-display);
+  letter-spacing: var(--lh-tracking-display);
+  text-wrap: balance;
+}
+
+.section-intro__lead {
+  max-width: var(--lh-measure);
+  margin-top: var(--lh-space-md);
+  color: var(--lh-muted);
+  font-size: var(--lh-text-base);
+  line-height: var(--lh-leading-text);
+}
+
+/* ---------- Sobre plano oscuro ---------- */
+.section-intro--invert .section-intro__number,
+.section-intro--invert .kicker,
+.section-intro--invert .section-intro__lead {
+  color: var(--lh-muted-invert);
+}
+
+@media (max-width: 900px) {
+  .section-intro {
+    grid-template-columns: 1fr;
+    gap: var(--lh-space-md);
+  }
+
+  .section-intro__number {
+    padding-top: 0;
+  }
+}

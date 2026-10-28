@@ -1,0 +1,76 @@
+/*
+ * Acceso flotante a WhatsApp.
+ * -----------------------------------------------------------------------------
+ * El verde es el de la marca WhatsApp y no sale de los tokens a propósito: es
+ * el color que hace reconocible el botón. Si la dirección visual prefiere
+ * integrarlo a la paleta, alcanza con cambiar `--wa-bg` por `--lh-deep`.
+ */
+
+.wa-fab {
+  --wa-bg: #25d366;
+  --wa-bg-hover: #1da851;
+  --wa-size: 56px;
+
+  position: fixed;
+  right: clamp(1rem, 4vw, 2.5rem);
+  bottom: clamp(1rem, 4vw, 2.5rem);
+  /* Por debajo de la cabecera (50) y del salto al contenido (100): el panel
+     del menú móvil se despliega sobre el botón, no al revés. */
+  z-index: 40;
+
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--lh-radius-pill);
+  background: var(--wa-bg);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(37, 41, 38, 0.22);
+  transition:
+    background-color var(--lh-dur) var(--lh-ease),
+    box-shadow var(--lh-dur) var(--lh-ease),
+    transform var(--lh-dur) var(--lh-ease);
+}
+
+.wa-fab:hover {
+  background: var(--wa-bg-hover);
+  box-shadow: 0 14px 34px rgba(37, 41, 38, 0.28);
+  transform: translateY(-2px);
+}
+
+.wa-fab__icon {
+  flex: none;
+  width: var(--wa-size);
+  height: var(--wa-size);
+  display: grid;
+  place-items: center;
+}
+
+/* La etiqueta sólo acompaña: colapsada no ocupa ancho, y el botón queda redondo. */
+.wa-fab__label {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  font-family: var(--lh-sans);
+  font-size: var(--lh-text-sm);
+  letter-spacing: var(--lh-tracking-brand);
+  transition:
+    max-width var(--lh-dur) var(--lh-ease),
+    opacity var(--lh-dur) var(--lh-ease),
+    padding-right var(--lh-dur) var(--lh-ease);
+}
+
+.wa-fab:focus-visible .wa-fab__label {
+  max-width: 10rem;
+  opacity: 1;
+  padding-right: var(--lh-space-md);
+}
+
+/* Se despliega al pasar el mouse; en táctil queda siempre como círculo. */
+@media (hover: hover) and (pointer: fine) {
+  .wa-fab:hover .wa-fab__label {
+    max-width: 10rem;
+    opacity: 1;
+    padding-right: var(--lh-space-md);
+  }
+}

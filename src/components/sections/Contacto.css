@@ -1,0 +1,123 @@
+.contacto__heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(var(--lh-space-md), 5vw, var(--lh-space-2xl));
+  align-items: start;
+  margin-bottom: clamp(var(--lh-space-xl), 6vw, var(--lh-space-2xl));
+}
+
+/* Monograma de cierre, heredado de la propuesta visual. */
+.contacto__mark {
+  width: clamp(5rem, 11vw, 9rem);
+  color: var(--lh-warm);
+}
+
+.contacto__title {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-m);
+  font-weight: 500;
+  line-height: var(--lh-leading-display);
+  letter-spacing: var(--lh-tracking-display);
+  text-wrap: balance;
+}
+
+.contacto__title em {
+  color: var(--lh-blue-text);
+  font-weight: 400;
+}
+
+.contacto__text {
+  max-width: var(--lh-measure);
+  margin-top: var(--lh-space-md);
+  color: var(--lh-muted);
+  font-size: var(--lh-text-base);
+}
+
+.contacto__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(var(--lh-space-lg), 5vw, var(--lh-space-2xl));
+  align-items: start;
+  margin-top: clamp(var(--lh-space-xl), 5vw, var(--lh-space-2xl));
+}
+
+/* El formulario es intrínsecamente más alto que esta columna. En lugar de
+   dejarla colgada arriba con ~300px de aire muerto, acompaña el scroll: el
+   vacío pasa a ser aire intencional y los datos quedan siempre a mano. */
+@media (min-width: 901px) {
+  .contacto__details {
+    position: sticky;
+    top: calc(var(--lh-header-h-compact) + var(--lh-space-md));
+  }
+}
+
+/* ---------- Datos de la oficina ---------- */
+.contacto__detail {
+  padding-block: var(--lh-space-md);
+  border-bottom: var(--lh-hairline) solid var(--lh-line);
+}
+
+.contacto__detail:first-child {
+  padding-top: 0;
+}
+
+.contacto__detail:last-child {
+  border-bottom: 0;
+}
+
+.contacto__address {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-text-lead);
+  line-height: 1.45;
+}
+
+.contacto__maps {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lh-space-2xs);
+  min-height: 24px;
+  margin-top: var(--lh-space-2xs);
+  padding-block: var(--lh-space-3xs);
+  color: var(--lh-blue-text);
+  font-size: var(--lh-text-sm);
+  font-weight: 500;
+}
+
+.contacto__maps:focus-visible,
+.contacto__maps:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contacto__social-link {
+  display: flex;
+  align-items: center;
+  gap: var(--lh-space-2xs);
+  padding-block: var(--lh-space-2xs);
+  font-size: var(--lh-text-sm);
+  transition: color var(--lh-dur) var(--lh-ease);
+}
+
+.contacto__social-link:focus-visible {
+  color: var(--lh-blue-text);
+}
+
+@media (hover: hover) {
+  .contacto__social-link:hover {
+    color: var(--lh-blue-text);
+  }
+}
+
+@media (max-width: 900px) {
+  .contacto__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .contacto__heading {
+    grid-template-columns: 1fr;
+    gap: var(--lh-space-md);
+  }
+
+}

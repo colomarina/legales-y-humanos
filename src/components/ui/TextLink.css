@@ -1,0 +1,34 @@
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lh-space-2xs);
+  padding-block: var(--lh-space-3xs);
+  font-size: var(--lh-text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.text-link__label {
+  position: relative;
+}
+
+.text-link__label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -4px;
+  height: var(--lh-hairline);
+  background: currentColor;
+  transition: right var(--lh-dur) var(--lh-ease);
+}
+
+.text-link:focus-visible .text-link__label::after {
+  right: 0;
+}
+
+@media (hover: hover) {
+  .text-link:hover .text-link__label::after {
+    right: 0;
+  }
+}

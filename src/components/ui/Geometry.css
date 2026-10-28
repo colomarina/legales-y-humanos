@@ -1,0 +1,99 @@
+.geometry {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.geometry__circle,
+.geometry__bar,
+.geometry__glow {
+  position: absolute;
+  display: block;
+}
+
+.geometry__circle {
+  aspect-ratio: 1;
+  border: var(--lh-hairline) solid rgba(225, 175, 126, 0.75);
+  border-radius: 50%;
+}
+
+.geometry__bar {
+  background: var(--lh-blue);
+  opacity: 0.8;
+}
+
+/* Atmósfera cálida que ocupa el lugar de la fotografía en la propuesta visual. */
+.geometry__glow {
+  background: radial-gradient(circle, rgba(225, 175, 126, 0.17), transparent 68%);
+}
+
+/* ---------- Variante del hero ---------- */
+.geometry--hero .geometry__circle {
+  width: 27vw;
+  max-width: 430px;
+  right: 9%;
+  top: 14%;
+}
+
+.geometry--hero .geometry__bar {
+  width: 180px;
+  height: 460px;
+  right: 0;
+  bottom: -130px;
+  transform: rotate(34deg);
+}
+
+.geometry--hero .geometry__glow {
+  width: 46vw;
+  height: 46vw;
+  right: 0;
+  top: 2%;
+}
+
+/* ---------- Variante del banner ---------- */
+.geometry--banner .geometry__circle {
+  width: 300px;
+  left: 6%;
+  top: -90px;
+}
+
+.geometry--banner .geometry__bar {
+  width: 120px;
+  height: 320px;
+  right: 7%;
+  bottom: -150px;
+  transform: rotate(34deg);
+}
+
+.geometry--banner .geometry__glow {
+  width: 520px;
+  height: 520px;
+  right: -60px;
+  top: -140px;
+}
+
+@media (max-width: 650px) {
+  .geometry--hero .geometry__circle {
+    width: 62vw;
+    right: -14%;
+    top: 8%;
+  }
+
+  .geometry--hero .geometry__bar {
+    width: 110px;
+    height: 300px;
+    bottom: -110px;
+  }
+
+  .geometry--banner .geometry__circle {
+    width: 210px;
+    left: -40px;
+  }
+
+  .geometry--banner .geometry__bar {
+    width: 80px;
+    height: 220px;
+    bottom: -110px;
+  }
+}

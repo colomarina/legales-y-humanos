@@ -1,0 +1,20 @@
+.arrow {
+  display: inline-block;
+  line-height: 1;
+  transition: transform var(--lh-dur) var(--lh-ease);
+}
+
+/* El desplazamiento lo dispara el contenedor interactivo, no la flecha.
+   El hover va protegido: en táctil no existe y, peor, se queda pegado
+   después de tocar. El foco de teclado sí aplica en todos lados. */
+a:focus-visible > .arrow,
+button:focus-visible > .arrow {
+  transform: translate(3px, -3px);
+}
+
+@media (hover: hover) {
+  a:hover > .arrow,
+  button:hover > .arrow {
+    transform: translate(3px, -3px);
+  }
+}

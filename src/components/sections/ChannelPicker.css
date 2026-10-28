@@ -1,0 +1,214 @@
+.picker__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Es la única decisión de la página: merece jerarquía de subtítulo, no de
+   etiqueta al paso. */
+.picker__legend {
+  padding: 0;
+  margin-bottom: var(--lh-space-md);
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-xs);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.picker__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--lh-space-sm);
+}
+
+/* Sin elegir: contorno marcado, para que se lea disponible y no desactivada.
+   Elegida: plano lleno del color de su disciplina. */
+.picker__option {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lh-space-sm);
+  min-height: 132px;
+  padding: var(--lh-space-md);
+  border: 2px solid var(--lh-line);
+  background: transparent;
+  color: var(--lh-ink);
+  cursor: pointer;
+  transition:
+    background-color var(--lh-dur) var(--lh-ease),
+    border-color var(--lh-dur) var(--lh-ease);
+}
+
+.picker__option.is-active {
+  border-color: transparent;
+}
+
+.picker__option--rrhh.is-active {
+  background: var(--lh-warm);
+}
+
+.picker__option--juridico.is-active {
+  background: var(--lh-blue);
+}
+
+/* El radio está oculto: el anillo de foco lo muestra la tarjeta. */
+.picker__option:has(input:focus-visible) {
+  outline: 2px solid var(--lh-focus);
+  outline-offset: 3px;
+}
+
+.picker__head {
+  display: flex;
+  align-items: center;
+  gap: var(--lh-space-xs);
+}
+
+/* Punto de radio: el estado de selección no depende sólo del color de fondo. */
+.picker__dot {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border: var(--lh-hairline) solid var(--lh-ink);
+  border-radius: 50%;
+}
+
+.picker__dot::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lh-ink);
+  transform: scale(0);
+  transition: transform var(--lh-dur) var(--lh-ease);
+}
+
+.picker__option.is-active .picker__dot::after {
+  transform: scale(1);
+}
+
+.picker__eyebrow {
+  font-size: var(--lh-kicker);
+  font-weight: 500;
+  letter-spacing: var(--lh-tracking-kicker);
+  text-transform: uppercase;
+}
+
+.picker__index {
+  font-family: var(--lh-serif);
+  font-style: italic;
+  font-size: var(--lh-text-base);
+  letter-spacing: 0;
+}
+
+.picker__description {
+  font-family: var(--lh-serif);
+  font-size: var(--lh-display-xs);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* ---------- Datos del recorrido elegido ---------- */
+.picker__panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lh-space-sm) var(--lh-space-lg);
+  margin-top: var(--lh-space-sm);
+  padding: var(--lh-space-md);
+  animation: picker-swap var(--lh-dur-slow) var(--lh-ease);
+}
+
+/* Destello breve al cambiar de recorrido: sin él, el cambio es fácil de no ver. */
+@keyframes picker-swap {
+  from {
+    opacity: 0.35;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.picker__panel--rrhh {
+  background: var(--lh-warm-soft);
+}
+
+.picker__panel--juridico {
+  background: var(--lh-blue-soft);
+}
+
+.picker__email {
+  font-size: var(--lh-text-base);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  border-bottom: var(--lh-hairline) solid var(--lh-line-strong);
+  padding-bottom: var(--lh-space-3xs);
+}
+
+.picker__direct {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--lh-space-md);
+}
+
+.picker__action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lh-space-2xs);
+  min-height: 24px;
+  padding-block: var(--lh-space-3xs);
+  font-size: var(--lh-text-sm);
+  font-weight: 500;
+}
+
+.picker__action:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .picker__option:hover {
+    border-color: var(--lh-ink);
+  }
+
+  .picker__option.is-active:hover {
+    border-color: transparent;
+  }
+
+  .picker__email:hover {
+    border-bottom-color: var(--lh-ink);
+  }
+
+  .picker__action:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .picker__panel {
+    animation: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .picker__options {
+    grid-template-columns: 1fr;
+  }
+
+  .picker__option {
+    min-height: 0;
+  }
+
+  .picker__panel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
