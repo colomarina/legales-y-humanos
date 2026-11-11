@@ -57,13 +57,18 @@
 
 .section-intro--aside .section-intro__body {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
   gap: clamp(var(--lh-space-lg), 4vw, var(--lh-space-xl));
   align-items: center;
 }
 
+.section-intro--aside {
+  grid-template-columns: minmax(140px, 0.25fr) 1.75fr;
+}
+
 .section-intro--aside .section-intro__title {
   max-width: none;
+  font-size: clamp(2.25rem, 3.6vw, 3.5rem);
 }
 
 .section-intro--aside .section-intro__lead {
