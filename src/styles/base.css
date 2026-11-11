@@ -140,13 +140,17 @@ svg {
   text-transform: uppercase;
 }
 
+.kicker--ruled {
+  display: flex;
+  align-items: center;
+  gap: var(--lh-space-sm);
+}
+
 .kicker--ruled::after {
   content: '';
-  display: inline-block;
+  flex: none;
   width: 40px;
   height: var(--lh-hairline);
-  margin-left: var(--lh-space-sm);
-  vertical-align: middle;
   background: currentColor;
   opacity: 0.5;
 }
