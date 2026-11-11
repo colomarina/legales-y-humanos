@@ -26,8 +26,6 @@ export function Particulares() {
         <ul className="particulares__grid" data-reveal>
           {particulares.services.map((service, index) => (
             <li key={service.title}>
-              {/* Enlace real: el bloque reacciona al hover, así que tiene que llevar
-                  a algún lado. Lleva a la consulta, como en la propuesta visual. */}
               <a
                 className={`particulares__item particulares__item--${service.tone}`}
                 href={particulares.cta.href}
