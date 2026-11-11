@@ -6,9 +6,9 @@
 
 .profile {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   gap: clamp(var(--lh-space-lg), 6vw, var(--lh-space-2xl));
-  align-items: start;
+  align-items: center;
 }
 
 /* El segundo perfil espeja la composición: retrato a la derecha. */
@@ -55,54 +55,39 @@
   letter-spacing: 0.01em;
 }
 
-.profile__quote {
+.profile__bio {
   max-width: var(--lh-measure);
-  margin: var(--lh-space-md) 0 0;
+  margin-top: var(--lh-space-md);
   padding-left: var(--lh-space-md);
   border-left: 2px solid var(--lh-warm);
   font-family: var(--lh-serif);
-  font-size: var(--lh-text-lead);
-  font-style: italic;
-  line-height: 1.5;
+  font-size: var(--lh-display-xs);
+  line-height: 1.4;
+  text-wrap: pretty;
 }
 
-.profile--juridico .profile__quote {
+.profile--juridico .profile__bio {
   border-left-color: var(--lh-blue);
-}
-
-.profile__skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--lh-space-2xs);
-  margin-top: var(--lh-space-md);
-}
-
-.profile__skills li {
-  padding: var(--lh-space-3xs) var(--lh-space-xs);
-  border: var(--lh-hairline) solid var(--lh-line);
-  border-radius: var(--lh-radius-pill);
-  color: var(--lh-muted);
-  font-size: var(--lh-text-xs);
-  line-height: 1.6;
 }
 
 /* ---------- Banner de cierre ---------- */
 .founders-banner {
   position: relative;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   min-height: 340px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--lh-space-lg);
   margin-top: clamp(var(--lh-space-xl), 7vw, var(--lh-space-2xl));
-  padding: clamp(var(--lh-space-lg), 5vw, var(--lh-space-2xl));
+  border-radius: var(--lh-radius);
 }
 
-.founders-banner__statement,
-.founders-banner__caption {
+.founders-banner__text {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(var(--lh-space-lg), 5vw, var(--lh-space-2xl));
 }
 
 .founders-banner__statement {
@@ -118,11 +103,50 @@
   font-weight: 400;
 }
 
+.founders-banner__rule {
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-block: var(--lh-space-lg) var(--lh-space-md);
+  background: var(--lh-blue);
+}
+
 .founders-banner__caption {
   color: var(--lh-muted-invert);
   font-size: var(--lh-kicker);
   letter-spacing: var(--lh-tracking-kicker);
   text-transform: uppercase;
+}
+
+/* El borde izquierdo de la foto es un arco de elipse; el filete beige lo
+   acompaña un poco por fuera, como en el hero. */
+.founders-banner__media {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+}
+
+.founders-banner__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  clip-path: ellipse(100% 120% at 100% 50%);
+}
+
+.founders-banner__media::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -20%;
+  bottom: -20%;
+  left: -14px;
+  width: 200%;
+  border: var(--lh-hairline) solid rgba(225, 175, 126, 0.75);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {
@@ -137,6 +161,24 @@
   }
 
   .profile__portrait {
-    max-width: 320px;
+    max-width: 360px;
+  }
+
+  .founders-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .founders-banner__media {
+    order: -1;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* En una columna el arco pasa al borde inferior de la foto. */
+  .founders-banner__media img {
+    clip-path: ellipse(120% 100% at 50% 0%);
+  }
+
+  .founders-banner__media::before {
+    display: none;
   }
 }

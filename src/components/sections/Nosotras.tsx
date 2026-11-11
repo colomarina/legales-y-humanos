@@ -1,6 +1,5 @@
 import type { Profile } from '@/content/site'
 import { nosotras } from '@/content/site'
-import { Geometry } from '@/components/ui/Geometry'
 import { Portrait } from '@/components/ui/Portrait'
 import { SectionIntro } from '@/components/layout/SectionIntro'
 import './Nosotras.css'
@@ -9,7 +8,7 @@ function ProfileCard({ profile }: { profile: Profile }) {
   return (
     <article className={`profile profile--${profile.tone}`} data-reveal>
       <div className="profile__portrait">
-        <Portrait tone={profile.tone} label={profile.portraitAlt} />
+        <Portrait tone={profile.tone} photo={profile.photo} />
       </div>
       <div className="profile__body">
         <p className="kicker profile__discipline">{profile.discipline}</p>
@@ -18,14 +17,7 @@ function ProfileCard({ profile }: { profile: Profile }) {
           <span aria-hidden="true">.</span>
         </h3>
         <p className="profile__role">{profile.role}</p>
-        <blockquote className="profile__quote">
-          <p>{profile.quote}</p>
-        </blockquote>
-        <ul className="profile__skills">
-          {profile.skills.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
+        <p className="profile__bio">{profile.bio}</p>
       </div>
     </article>
   )
@@ -37,8 +29,8 @@ export function Nosotras() {
       <div className="container">
         <SectionIntro
           number={nosotras.number}
-          kicker={nosotras.kicker}
           title={nosotras.title}
+          rule="juridico"
         />
 
         <div className="nosotras__profiles">
@@ -48,13 +40,27 @@ export function Nosotras() {
         </div>
 
         <aside className="founders-banner plane--deep" data-reveal>
-          <Geometry variant="banner" />
-          <p className="founders-banner__statement">
-            {nosotras.banner.lineOne}
-            <br />
-            <em>{nosotras.banner.lineTwo}</em>
-          </p>
-          <span className="founders-banner__caption">{nosotras.banner.caption}</span>
+          <div className="founders-banner__text">
+            <p className="founders-banner__statement">
+              {nosotras.banner.lineOne}
+              <br />
+              <em>{nosotras.banner.lineTwo}</em>
+            </p>
+            <span className="founders-banner__rule" aria-hidden="true" />
+            <span className="founders-banner__caption">{nosotras.banner.caption}</span>
+          </div>
+          {/* La foto entra recortada por un arco: el mismo gesto del círculo
+              de la marca, ahora con las dos profesionales adentro. */}
+          <figure className="founders-banner__media">
+            <img
+              src={nosotras.banner.photo.src}
+              alt={nosotras.banner.photo.alt}
+              width={nosotras.banner.photo.width}
+              height={nosotras.banner.photo.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </aside>
       </div>
     </section>

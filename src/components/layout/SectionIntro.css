@@ -34,7 +34,52 @@
   line-height: var(--lh-leading-text);
 }
 
+/* La segunda mitad del título va en itálica y con el acento de la marca. */
+.section-intro__title em {
+  display: block;
+  color: var(--lh-warm-display);
+  font-weight: 400;
+}
+
+.section-intro__rule {
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin-top: var(--lh-space-md);
+}
+
+.section-intro__rule--rrhh {
+  background: var(--lh-warm);
+}
+
+.section-intro__rule--juridico {
+  background: var(--lh-blue);
+}
+
+/* Entrada en columna propia: título a la izquierda, párrafo a la derecha,
+   separados por un filete vertical. */
+.section-intro--aside .section-intro__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(var(--lh-space-lg), 4vw, var(--lh-space-xl));
+  align-items: center;
+}
+
+.section-intro--aside .section-intro__title {
+  max-width: none;
+}
+
+.section-intro--aside .section-intro__lead {
+  margin-top: 0;
+  padding-left: clamp(var(--lh-space-md), 3vw, var(--lh-space-lg));
+  border-left: var(--lh-hairline) solid var(--lh-line-warm);
+}
+
 /* ---------- Sobre plano oscuro ---------- */
+.section-intro--invert .section-intro__title em {
+  color: var(--lh-warm);
+}
+
 .section-intro--invert .section-intro__number,
 .section-intro--invert .kicker,
 .section-intro--invert .section-intro__lead {
@@ -49,5 +94,15 @@
 
   .section-intro__number {
     padding-top: 0;
+  }
+
+  .section-intro--aside .section-intro__body {
+    grid-template-columns: 1fr;
+    gap: var(--lh-space-md);
+  }
+
+  .section-intro--aside .section-intro__lead {
+    padding-left: 0;
+    border-left: 0;
   }
 }

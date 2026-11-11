@@ -1,7 +1,6 @@
 import { hero } from '@/content/site'
 import { Button } from '@/components/ui/Button'
 import { Geometry } from '@/components/ui/Geometry'
-import { TextLink } from '@/components/ui/TextLink'
 import './Hero.css'
 
 export function Hero() {
@@ -34,10 +33,27 @@ export function Hero() {
           <p className="hero__description">{hero.description}</p>
           <div className="hero__actions">
             <Button href={hero.primaryCta.href}>{hero.primaryCta.label}</Button>
-            <TextLink href={hero.secondaryCta.href}>{hero.secondaryCta.label}</TextLink>
+            <Button href={hero.secondaryCta.href} tone="outline">
+              {hero.secondaryCta.label}
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Fotografía real del estudio dentro del círculo de la marca. Es la
+          imagen principal de la página, así que no se difiere la carga. */}
+      <figure className="hero__media">
+        <span className="hero__ring" aria-hidden="true" />
+        <img
+          className="hero__photo"
+          src={hero.photo.src}
+          alt={hero.photo.alt}
+          width={hero.photo.width}
+          height={hero.photo.height}
+          fetchPriority="high"
+          decoding="async"
+        />
+      </figure>
 
       <div className="container hero__footnotes">
         <span>{hero.footnotes[0]}</span>

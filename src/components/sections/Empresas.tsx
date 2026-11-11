@@ -1,6 +1,7 @@
 import { empresas } from '@/content/site'
 import { Arrow } from '@/components/ui/Arrow'
 import { Button } from '@/components/ui/Button'
+import { Icon } from '@/components/ui/Icon'
 import { SectionIntro } from '@/components/layout/SectionIntro'
 import { useContactChannel } from '@/context/ContactChannelContext'
 import './Empresas.css'
@@ -18,30 +19,33 @@ export function Empresas() {
           kicker={empresas.kicker}
           title={empresas.title}
           intro={empresas.intro}
+          introAside
         />
 
-        <div className="service-list" data-reveal>
-          {empresas.services.map((service, index) => (
-            /* Enlace real: la fila responde al hover, así que tiene que conducir
-               a la consulta, como en la propuesta visual aprobada. */
-            <a
-              className="service-row"
-              href={empresas.cta.href}
-              key={service.title}
-              onClick={goToContact}
-            >
-              <span className="service-row__number" aria-hidden="true">
-                0{index + 1}
-              </span>
-              <h3 className="service-row__title">
-                {service.title}
-                <span aria-hidden="true">.</span>
-              </h3>
-              <p className="service-row__copy">{service.text}</p>
-              <Arrow />
-            </a>
+        <ul className="service-cards" data-reveal>
+          {empresas.services.map((service) => (
+            <li key={service.title}>
+              {/* Enlace real: la tarjeta responde al hover, así que tiene que
+                  conducir a la consulta, como en la propuesta visual aprobada. */}
+              <a
+                className={`service-card service-card--${service.tone}`}
+                href={empresas.cta.href}
+                onClick={goToContact}
+              >
+                <span className="service-card__icon">
+                  <Icon name={service.icon} />
+                </span>
+                <span className="service-card__body">
+                  <h3 className="service-card__title">{service.title}</h3>
+                  <p className="service-card__copy">{service.text}</p>
+                </span>
+                <span className="service-card__arrow">
+                  <Arrow />
+                </span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="consulting-cta" data-reveal>
           <div className="consulting-cta__body">

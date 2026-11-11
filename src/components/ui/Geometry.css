@@ -29,11 +29,11 @@
 }
 
 /* ---------- Variante del hero ---------- */
-.geometry--hero .geometry__circle {
-  width: 27vw;
-  max-width: 430px;
-  right: 9%;
-  top: 14%;
+/* El círculo y el resplandor los reemplaza la fotografía del estudio; en el
+   hero queda solo la barra azul. */
+.geometry--hero .geometry__circle,
+.geometry--hero .geometry__glow {
+  display: none;
 }
 
 .geometry--hero .geometry__bar {
@@ -74,12 +74,6 @@
 }
 
 @media (max-width: 650px) {
-  .geometry--hero .geometry__circle {
-    width: 62vw;
-    right: -14%;
-    top: 8%;
-  }
-
   .geometry--hero .geometry__bar {
     width: 110px;
     height: 300px;
@@ -96,4 +90,13 @@
     height: 220px;
     bottom: -110px;
   }
+}
+
+/* La barra azul del hero va por encima de la fotografía, como en el boceto. */
+.geometry--hero {
+  z-index: 1;
+}
+
+.geometry--hero .geometry__bar {
+  z-index: 1;
 }
