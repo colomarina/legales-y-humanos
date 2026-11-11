@@ -3,7 +3,6 @@
   min-height: min(100svh, 860px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   /* El padding superior deja libre la cabecera fija. */
   padding-block: calc(var(--lh-header-h) + var(--lh-space-2xl)) var(--lh-space-xl);
   overflow: hidden;
@@ -96,7 +95,7 @@
   --hero-media-size: min(
     56vw,
     900px,
-    calc(min(100svh, 860px) - var(--lh-header-h) - 2 * var(--lh-space-lg))
+    calc(min(100svh, 860px) - var(--lh-header-h) - 2 * var(--lh-space-xl))
   );
   --hero-container-margin: calc((100% - min(var(--lh-maxw), 100% - 2 * var(--lh-gutter))) / 2);
 
@@ -125,32 +124,6 @@
   inset: -3% 4% -3% -5%;
   border: var(--lh-hairline) solid rgba(225, 175, 126, 0.75);
   border-radius: 50%;
-}
-
-/* Ancladas a la izquierda, no repartidas a lo ancho: con la segunda nota
-   alineada a la derecha caía encima de la barra azul de la geometría, donde
-   el texto quedaba en 1.6:1 e ilegible. */
-.hero__footnotes {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--lh-space-md);
-  margin-top: var(--lh-space-2xl);
-  color: var(--lh-muted-invert);
-  font-size: var(--lh-kicker);
-  letter-spacing: var(--lh-tracking-kicker);
-  text-transform: uppercase;
-}
-
-.hero__rule {
-  flex: none;
-  width: clamp(40px, 8vw, 120px);
-  height: var(--lh-hairline);
-  background: currentColor;
-  opacity: 0.4;
 }
 
 @media (max-width: 900px) {
@@ -183,9 +156,5 @@
 
   .hero__actions .button {
     width: 100%;
-  }
-
-  .hero__footnotes {
-    margin-top: var(--lh-space-xl);
   }
 }

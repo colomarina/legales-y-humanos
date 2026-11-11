@@ -93,7 +93,6 @@ export const hero = {
     'Una consultora jurídica y de Recursos Humanos que combina conocimiento, experiencia y cercanía para acompañar a empresas y particulares.',
   primaryCta: { label: 'Conocé nuestros servicios', href: '#empresas' },
   secondaryCta: { label: 'Contactanos', href: '#contacto' },
-  footnotes: ['Asesoramiento claro', 'Criterio humano'],
   photo: {
     src: asset('fotos/estudio.webp'),
     alt: 'Sala de reuniones del estudio, con el logo de Bogarsukoff & Baldaro en la pared',

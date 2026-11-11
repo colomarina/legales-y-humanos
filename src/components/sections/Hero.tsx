@@ -52,12 +52,6 @@ export function Hero() {
           decoding="async"
         />
       </figure>
-
-      <div className="container hero__footnotes">
-        <span>{hero.footnotes[0]}</span>
-        <span className="hero__rule" aria-hidden="true" />
-        <span>{hero.footnotes[1]}</span>
-      </div>
     </section>
   )
 }
