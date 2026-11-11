@@ -132,7 +132,7 @@
   margin-top: clamp(var(--lh-space-xl), 6vw, var(--lh-space-2xl));
   padding: clamp(var(--lh-space-lg), 4vw, var(--lh-space-xl));
   border-radius: var(--lh-radius);
-  background: var(--lh-warm);
+  background: var(--lh-warm-light);
   color: var(--lh-ink);
 }
 

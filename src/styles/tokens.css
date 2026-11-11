@@ -31,6 +31,7 @@
   /* ---------- Color: acentos de disciplina ---------- */
   /* Beige = Recursos Humanos · Azul = Jurídico */
   --lh-warm: #e1af7e;
+  --lh-warm-light: #ebcba9;
   --lh-warm-soft: #f4e4d5;
   --lh-warm-text: #8a5f2c; /* versión legible sobre papel — 5.3:1 */
   --lh-blue: #7bb4c2;
