@@ -20,7 +20,7 @@ export function Empresas() {
           title={empresas.title}
           titleAccent={empresas.titleAccent}
           intro={empresas.intro}
-          introInSideColumn
+          introAside
         />
 
         <ul className="service-cards" data-reveal>

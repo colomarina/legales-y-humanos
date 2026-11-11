@@ -9,7 +9,7 @@ interface SectionIntroProps {
   title: ReactNode
   titleAccent?: string
   intro?: string
-  introInSideColumn?: boolean
+  introAside?: boolean
   ruleTone?: Discipline
   /** Variante para planos oscuros. */
   invert?: boolean
@@ -21,14 +21,14 @@ export function SectionIntro({
   title,
   titleAccent,
   intro,
-  introInSideColumn = false,
+  introAside = false,
   ruleTone,
   invert = false,
 }: SectionIntroProps) {
   const classes = [
     'section-intro',
     invert && 'section-intro--invert',
-    introInSideColumn && 'section-intro--aside',
+    introAside && 'section-intro--aside',
   ]
     .filter(Boolean)
     .join(' ')

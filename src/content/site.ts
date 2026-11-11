@@ -271,7 +271,7 @@ export const contactChannels: ContactChannel[] = [
 
 export const contacto = {
   number: '05 — Contacto',
-  titleLead: 'Hablemos de',
+  title: 'Hablemos de',
   titleAccent: 'tu consulta.',
   text: 'Estamos para escuchar tu situación y ayudarte a encontrar un camino claro.',
   /* Etiqueta del selector de recorrido: es la única decisión que se le pide

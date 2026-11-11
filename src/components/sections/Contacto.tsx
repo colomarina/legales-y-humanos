@@ -21,7 +21,7 @@ export function Contacto() {
           <div className="contacto__heading-body">
             <p className="kicker">{contacto.number}</p>
             <h2 className="contacto__title">
-              {contacto.titleLead} <em>{contacto.titleAccent}</em>
+              {contacto.title} <em>{contacto.titleAccent}</em>
             </h2>
             <p className="contacto__text">{contacto.text}</p>
           </div>
