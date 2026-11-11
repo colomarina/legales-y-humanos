@@ -47,11 +47,11 @@
   margin-top: var(--lh-space-md);
 }
 
-.section-intro__rule--rrhh {
+.section-intro__rule--warm {
   background: var(--lh-warm);
 }
 
-.section-intro__rule--juridico {
+.section-intro__rule--blue {
   background: var(--lh-blue);
 }
 

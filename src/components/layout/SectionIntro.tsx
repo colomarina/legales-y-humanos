@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { Discipline } from '@/content/site'
+import type { Accent } from '@/content/site'
 import './SectionIntro.css'
 
 interface SectionIntroProps {
@@ -10,7 +10,7 @@ interface SectionIntroProps {
   titleAccent?: string
   intro?: string
   introAside?: boolean
-  ruleTone?: Discipline
+  ruleAccent?: Accent
   /** Variante para planos oscuros. */
   invert?: boolean
 }
@@ -22,7 +22,7 @@ export function SectionIntro({
   titleAccent,
   intro,
   introAside = false,
-  ruleTone,
+  ruleAccent,
   invert = false,
 }: SectionIntroProps) {
   const classes = [
@@ -48,9 +48,9 @@ export function SectionIntro({
               </>
             )}
           </h2>
-          {ruleTone && (
+          {ruleAccent && (
             <span
-              className={`section-intro__rule section-intro__rule--${ruleTone}`}
+              className={`section-intro__rule section-intro__rule--${ruleAccent}`}
               aria-hidden="true"
             />
           )}

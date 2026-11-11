@@ -26,13 +26,13 @@
     transform var(--lh-dur) var(--lh-ease);
 }
 
-.service-card--rrhh {
+.service-card--warm {
   --tone: var(--lh-warm);
   --tone-soft: var(--lh-warm-soft);
   --tone-text: var(--lh-warm-text);
 }
 
-.service-card--juridico {
+.service-card--blue {
   --tone: var(--lh-blue);
   --tone-soft: var(--lh-blue-soft);
   --tone-text: var(--lh-blue-text);

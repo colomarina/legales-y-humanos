@@ -56,11 +56,11 @@
   color: var(--lh-ink);
 }
 
-.particulares__item--rrhh .particulares__icon {
+.particulares__item--warm .particulares__icon {
   background: var(--lh-warm-soft);
 }
 
-.particulares__item--juridico .particulares__icon {
+.particulares__item--blue .particulares__icon {
   background: var(--lh-blue-soft);
 }
 

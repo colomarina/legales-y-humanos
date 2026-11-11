@@ -9,6 +9,8 @@ import type { IconName } from '@/components/ui/Icon'
 
 export type Discipline = 'rrhh' | 'juridico'
 
+export type Accent = 'warm' | 'blue'
+
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 export interface Photo {
@@ -36,7 +38,7 @@ export interface ServiceItem {
   title: string
   text: string
   icon: IconName
-  tone: Discipline
+  accent: Accent
 }
 
 export interface ProcessStep {
@@ -157,25 +159,25 @@ export const empresas = {
       title: 'Gestión de Recursos Humanos',
       text: 'Te acompañamos en la administración y organización del personal, con procesos claros, ordenados y eficientes.',
       icon: 'people',
-      tone: 'rrhh',
+      accent: 'warm',
     },
     {
       title: 'Asesoramiento en Relaciones Laborales',
       text: 'Brindamos orientación legal en la gestión del vínculo laboral, la aplicación de la normativa y la prevención de conflictos.',
       icon: 'scale',
-      tone: 'juridico',
+      accent: 'blue',
     },
     {
       title: 'Procesos y Organización',
       text: 'Diseñamos y ordenamos políticas, circuitos y documentación interna para una operación más clara, segura y previsible.',
       icon: 'layers',
-      tone: 'juridico',
+      accent: 'blue',
     },
     {
       title: 'Selección y Reclutamiento',
       text: 'Identificamos y evaluamos perfiles alineados a las necesidades y la cultura de tu equipo.',
       icon: 'person',
-      tone: 'rrhh',
+      accent: 'warm',
     },
   ] satisfies ServiceItem[],
   cta: {
@@ -197,25 +199,25 @@ export const particulares = {
       title: 'Derecho Laboral',
       text: 'Asesoramiento y representación en relaciones laborales, conflictos y reclamos.',
       icon: 'scale',
-      tone: 'rrhh',
+      accent: 'warm',
     },
     {
       title: 'Derecho Previsional',
       text: 'Gestión y asesoramiento en trámites y prestaciones ante organismos previsionales.',
       icon: 'coins',
-      tone: 'juridico',
+      accent: 'blue',
     },
     {
       title: 'Derecho Sucesorio',
       text: 'Acompañamiento integral en sucesiones, declaratorias y trámites registrales.',
       icon: 'document',
-      tone: 'juridico',
+      accent: 'blue',
     },
     {
       title: 'Consultar por otras ramas del Derecho',
       text: 'Analizamos tu caso y te orientamos según la necesidad.',
       icon: 'grid',
-      tone: 'rrhh',
+      accent: 'warm',
     },
   ] satisfies ServiceItem[],
   cta: {

@@ -59,7 +59,7 @@
 }
 
 .hero__statement {
-  max-width: 40rem;
+  max-width: min(40rem, 52%);
   margin-top: var(--lh-space-lg);
 }
 

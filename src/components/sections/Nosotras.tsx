@@ -31,7 +31,7 @@ export function Nosotras() {
           number={nosotras.number}
           title={nosotras.title}
           titleAccent={nosotras.titleAccent}
-          ruleTone="juridico"
+          ruleAccent="blue"
         />
 
         <div className="nosotras__profiles">

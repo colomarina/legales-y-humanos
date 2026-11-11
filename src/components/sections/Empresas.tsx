@@ -27,7 +27,7 @@ export function Empresas() {
           {empresas.services.map((service) => (
             <li key={service.title}>
               <a
-                className={`service-card service-card--${service.tone}`}
+                className={`service-card service-card--${service.accent}`}
                 href={empresas.cta.href}
                 onClick={goToContact}
               >

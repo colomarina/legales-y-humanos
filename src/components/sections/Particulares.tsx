@@ -19,7 +19,7 @@ export function Particulares() {
           kicker={particulares.kicker}
           title={particulares.title}
           intro={particulares.intro}
-          ruleTone="rrhh"
+          ruleAccent="warm"
           invert
         />
 
@@ -27,7 +27,7 @@ export function Particulares() {
           {particulares.services.map((service, index) => (
             <li key={service.title}>
               <a
-                className={`particulares__item particulares__item--${service.tone}`}
+                className={`particulares__item particulares__item--${service.accent}`}
                 href={particulares.cta.href}
                 onClick={goToContact}
               >
