@@ -2,8 +2,11 @@ import type { ReactNode } from 'react'
 import { Arrow } from './Arrow'
 import './Button.css'
 
-/** Beige = Recursos Humanos · Azul = Jurídico · Papel = sobre plano oscuro. */
-export type ButtonTone = 'warm' | 'blue' | 'paper'
+/**
+ * Beige = Recursos Humanos · Azul = Jurídico · Papel = contorno sobre color ·
+ * Outline = contorno claro sobre el plano oscuro, como acción secundaria.
+ */
+export type ButtonTone = 'warm' | 'blue' | 'paper' | 'outline'
 
 /** Clases del botón, para los casos en que hace falta un `<button>` nativo. */
 export function buttonClassName(tone: ButtonTone = 'warm'): string {

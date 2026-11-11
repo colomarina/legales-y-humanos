@@ -2,10 +2,30 @@
  * Contenido del sitio.
  * -----------------------------------------------------------------------------
  * Todos los textos provienen del proyecto /estructura, aprobado por las clientas.
+ * Nosotras, Empresas y Particulares se actualizaron con los bocetos que las
+ * clientas enviaron en noviembre de 2026.
  * No se inventa informacion: lo que falta queda marcado con `pendiente: true`.
  */
 
+import type { IconName } from '@/components/ui/Icon'
+
 export type Discipline = 'rrhh' | 'juridico'
+
+/** Título de sección en dos tramos: el segundo va en itálica y con acento. */
+export interface SplitTitle {
+  lead: string
+  accent: string
+}
+
+/** Ruta a un archivo de /public respetando la base del sitio (GitHub Pages). */
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
+export interface Photo {
+  src: string
+  alt: string
+  width: number
+  height: number
+}
 
 export interface NavLink {
   label: string
@@ -17,14 +37,15 @@ export interface Profile {
   discipline: string
   tone: Discipline
   role: string
-  quote: string
-  skills: string[]
-  portraitAlt: string
+  bio: string
+  photo: Photo
 }
 
 export interface ServiceItem {
   title: string
   text: string
+  icon: IconName
+  tone: Discipline
 }
 
 export interface ProcessStep {
@@ -80,78 +101,88 @@ export const hero = {
   primaryCta: { label: 'Conocé nuestros servicios', href: '#empresas' },
   secondaryCta: { label: 'Contactanos', href: '#contacto' },
   footnotes: ['Asesoramiento claro', 'Criterio humano'],
+  photo: {
+    src: asset('fotos/estudio.webp'),
+    alt: 'Sala de reuniones del estudio, con el logo de Bogarsukoff & Baldaro en la pared',
+    width: 1200,
+    height: 1200,
+  } satisfies Photo,
 } as const
 
 export const nosotras = {
   number: '01 — Nosotras',
-  kicker: 'Dos perspectivas, un mismo propósito',
-  title: 'Conocimiento que se complementa.',
+  title: { lead: 'Las profesionales detrás de', accent: 'Legales y Humanos.' } satisfies SplitTitle,
   profiles: [
     {
       name: 'Antonella Baldaro',
       discipline: 'Recursos Humanos',
       tone: 'rrhh',
       role: 'Profesional de Recursos Humanos. Cofundadora y titular.',
-      quote:
-        '“Acompaño a empresas en la gestión de sus relaciones laborales, buscando generar procesos más claros, organizados y preventivos.”',
-      skills: [
-        'Gestión de personas',
-        'Relaciones laborales',
-        'Selección y Reclutamiento',
-        'Procesos y organización laboral',
-      ],
-      portraitAlt: 'Espacio reservado para el retrato de Antonella Baldaro',
+      bio: 'Acompaña a empresas en la gestión de personas, las relaciones laborales y la organización de sus procesos de Recursos Humanos.',
+      photo: {
+        src: asset('fotos/antonella.webp'),
+        alt: 'Antonella Baldaro sentada a su escritorio en el estudio',
+        width: 1000,
+        height: 1250,
+      },
     },
     {
       name: 'Brenda Bogarsukoff',
       discipline: 'Asesoramiento jurídico',
       tone: 'juridico',
       role: 'Abogada. Cofundadora y titular.',
-      /* Pasada a primera persona para unificar la voz con la cita de Antonella;
-         el texto original de /estructura estaba en tercera. */
-      quote:
-        '“Aporto la perspectiva jurídica necesaria para analizar las implicancias legales de las decisiones vinculadas a las relaciones laborales.”',
-      skills: [
-        'Derecho Laboral',
-        'Asesoramiento jurídico',
-        'Prevención y resolución de contingencias laborales',
-      ],
-      portraitAlt: 'Espacio reservado para el retrato de Brenda Bogarsukoff',
+      bio: 'Brinda asesoramiento jurídico a empresas y particulares, con especial atención a las relaciones laborales y la prevención de conflictos.',
+      photo: {
+        src: asset('fotos/brenda.webp'),
+        alt: 'Brenda Bogarsukoff sentada a su escritorio en el estudio',
+        width: 1000,
+        height: 1250,
+      },
     },
   ] satisfies Profile[],
   banner: {
     lineOne: 'Dos profesiones.',
     lineTwo: 'Una mirada integral.',
     caption: 'Legales y Humanos · La Plata',
+    photo: {
+      src: asset('fotos/antonella-y-brenda.webp'),
+      alt: 'Antonella Baldaro y Brenda Bogarsukoff juntas en el estudio',
+      width: 900,
+      height: 900,
+    } satisfies Photo,
   },
 } as const
 
 export const empresas = {
   number: '02 — Empresas',
   kicker: 'Servicios integrales',
-  title: '¿Cómo podemos acompañar a tu empresa?',
+  title: { lead: '¿Cómo podemos acompañar', accent: 'a tu empresa?' } satisfies SplitTitle,
   intro:
     'Brindamos servicios de Recursos Humanos y asesoramiento jurídico laboral, adaptados a las necesidades de cada organización.',
   services: [
     {
       title: 'Gestión de Recursos Humanos',
-      text: 'Diseñamos y acompañamos una gestión de personas clara, consistente y alineada con la realidad de tu organización.',
+      text: 'Te acompañamos en la administración y organización del personal, con procesos claros, ordenados y eficientes.',
+      icon: 'people',
+      tone: 'rrhh',
     },
     {
       title: 'Asesoramiento en Relaciones Laborales',
-      text: 'Integramos la mirada jurídica y humana para prevenir contingencias y construir vínculos laborales sostenibles.',
+      text: 'Brindamos orientación legal en la gestión del vínculo laboral, la aplicación de la normativa y la prevención de conflictos.',
+      icon: 'scale',
+      tone: 'juridico',
     },
     {
       title: 'Procesos y Organización',
-      text: 'Ordenamos políticas, circuitos y documentación para que la operación cotidiana gane claridad y previsibilidad.',
+      text: 'Diseñamos y ordenamos políticas, circuitos y documentación interna para una operación más clara, segura y previsible.',
+      icon: 'layers',
+      tone: 'juridico',
     },
     {
       title: 'Selección y Reclutamiento',
-      text: 'Buscamos perfiles que respondan a las necesidades técnicas y culturales de cada equipo.',
-    },
-    {
-      title: 'Consultoría de Recursos Humanos',
-      text: 'Desarrollamos soluciones a medida para desafíos específicos, con criterio profesional y cercanía.',
+      text: 'Identificamos y evaluamos perfiles alineados a las necesidades y la cultura de tu equipo.',
+      icon: 'person',
+      tone: 'rrhh',
     },
   ] satisfies ServiceItem[],
   cta: {
@@ -167,14 +198,33 @@ export const particulares = {
   number: '03 — Particulares',
   kicker: 'Asesoramiento jurídico',
   title: 'Servicios para particulares.',
-  intro:
-    'Además de nuestros servicios de consultoría para empresas, brindamos asesoramiento y representación jurídica a particulares en distintas áreas del Derecho.',
+  intro: 'Brindamos asesoramiento y representación jurídica a particulares en distintas áreas del Derecho.',
   services: [
-    'Accidentes de Trabajo y Enfermedades Profesionales (ART)',
-    'Derecho Previsional',
-    'Derecho Sucesorio',
-    'Otras ramas del Derecho',
-  ],
+    {
+      title: 'Derecho Laboral',
+      text: 'Asesoramiento y representación en relaciones laborales, conflictos y reclamos.',
+      icon: 'scale',
+      tone: 'rrhh',
+    },
+    {
+      title: 'Derecho Previsional',
+      text: 'Gestión y asesoramiento en trámites y prestaciones ante organismos previsionales.',
+      icon: 'coins',
+      tone: 'juridico',
+    },
+    {
+      title: 'Derecho Sucesorio',
+      text: 'Acompañamiento integral en sucesiones, declaratorias y trámites registrales.',
+      icon: 'document',
+      tone: 'juridico',
+    },
+    {
+      title: 'Consultar por otras ramas del Derecho',
+      text: 'Analizamos tu caso y te orientamos según la necesidad.',
+      icon: 'grid',
+      tone: 'rrhh',
+    },
+  ] satisfies ServiceItem[],
   cta: {
     text: '¿Necesitás asesoramiento jurídico?',
     label: 'Realizar una consulta',

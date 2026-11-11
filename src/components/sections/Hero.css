@@ -39,7 +39,7 @@
 .hero__title {
   margin-top: var(--lh-space-md);
   font-family: var(--lh-serif);
-  font-size: var(--lh-display-xl);
+  font-size: clamp(3.75rem, 8.4vw, 9rem);
   font-weight: 500;
   line-height: 0.76;
   letter-spacing: -0.055em;
@@ -54,19 +54,21 @@
   color: var(--lh-blue);
 }
 
-/* El enunciado se desplaza a la derecha para generar la tensión asimétrica
-   que caracteriza la dirección visual. */
+/* Todo el texto queda en la columna izquierda; la derecha es de la foto. */
+.hero__inner > * {
+  max-width: min(48rem, 52%);
+}
+
 .hero__statement {
   max-width: 40rem;
-  margin-top: var(--lh-space-xl);
-  margin-left: auto;
+  margin-top: var(--lh-space-lg);
 }
 
 .hero__lead {
   font-family: var(--lh-serif);
-  font-size: var(--lh-display-l);
+  font-size: clamp(2.25rem, 4.4vw, 4.25rem);
   font-weight: 400;
-  line-height: 0.92;
+  line-height: 0.95;
   letter-spacing: -0.045em;
 }
 
@@ -87,8 +89,41 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--lh-space-md) var(--lh-space-lg);
+  gap: var(--lh-space-md);
   margin-top: var(--lh-space-lg);
+}
+
+/* ---------- Fotografía ---------- */
+/* Círculo grande que se sale por la derecha, con un filete beige desfasado
+   hacia la izquierda: la geometría de la marca, ahora con el estudio real. */
+.hero__media {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: -10vw;
+  width: min(56vw, 900px);
+  aspect-ratio: 1;
+  margin: 0;
+  transform: translateY(-46%);
+}
+
+.hero__photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 50%;
+  border-radius: 50%;
+  /* Baja apenas el brillo de la pared blanca para que conviva con el plano
+     oscuro sin quitarle protagonismo al título. */
+  filter: brightness(0.9) saturate(0.95);
+}
+
+.hero__ring {
+  position: absolute;
+  inset: -3% 4% -3% -5%;
+  border: var(--lh-hairline) solid rgba(225, 175, 126, 0.75);
+  border-radius: 50%;
 }
 
 /* Ancladas a la izquierda, no repartidas a lo ancho: con la segunda nota
@@ -118,8 +153,19 @@
 }
 
 @media (max-width: 900px) {
-  .hero__statement {
-    margin-left: 0;
+  .hero__inner > * {
+    max-width: none;
+  }
+
+  /* En una columna la foto vuelve al flujo, debajo de las acciones, y se
+     sigue saliendo por la derecha. */
+  .hero__media {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(88vw, 520px);
+    margin: var(--lh-space-xl) calc(var(--lh-gutter) * -1) 0 auto;
+    transform: none;
   }
 }
 
