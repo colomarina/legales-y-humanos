@@ -1,6 +1,3 @@
-/* Tarjetas en grilla de 2×2. Cada una lleva el color de su disciplina en el
-   recuadro del ícono y en la esquina inferior derecha, así el código de color
-   está presente también para quien nunca pasa el mouse por encima. */
 .service-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -12,10 +9,6 @@
 }
 
 .service-card {
-  --tone: var(--lh-warm);
-  --tone-soft: var(--lh-warm-soft);
-  --tone-text: var(--lh-warm-text);
-
   position: relative;
   overflow: hidden;
   flex: 1;
@@ -33,13 +26,18 @@
     transform var(--lh-dur) var(--lh-ease);
 }
 
+.service-card--rrhh {
+  --tone: var(--lh-warm);
+  --tone-soft: var(--lh-warm-soft);
+  --tone-text: var(--lh-warm-text);
+}
+
 .service-card--juridico {
   --tone: var(--lh-blue);
   --tone-soft: var(--lh-blue-soft);
   --tone-text: var(--lh-blue-text);
 }
 
-/* Esquina de color: un triángulo recortado en el ángulo inferior derecho. */
 .service-card::after {
   content: '';
   position: absolute;
@@ -66,7 +64,6 @@
   height: 32px;
 }
 
-/* Filete vertical entre el ícono y el texto. */
 .service-card__body {
   padding-left: clamp(var(--lh-space-md), 2.5vw, var(--lh-space-lg));
   border-left: var(--lh-hairline) solid var(--lh-line-warm);
@@ -174,7 +171,6 @@
   }
 }
 
-/* En móvil el ícono pasa arriba y la flecha se apoya junto a él. */
 @media (max-width: 560px) {
   .service-card {
     grid-template-columns: auto 1fr;

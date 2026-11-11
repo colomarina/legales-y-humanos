@@ -6,8 +6,6 @@
   border: var(--lh-hairline) solid var(--lh-line-invert);
 }
 
-/* Las celdas se separan por el fondo del grid: una retícula de hairlines.
-   Adentro: número arriba; ícono, filete y texto en una fila; flecha al pie. */
 .particulares__item {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -55,8 +53,11 @@
   width: 68px;
   height: 68px;
   border-radius: var(--lh-radius-sm);
-  background: var(--lh-warm-soft);
   color: var(--lh-ink);
+}
+
+.particulares__item--rrhh .particulares__icon {
+  background: var(--lh-warm-soft);
 }
 
 .particulares__item--juridico .particulares__icon {

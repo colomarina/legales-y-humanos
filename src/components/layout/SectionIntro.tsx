@@ -1,39 +1,34 @@
 import type { ReactNode } from 'react'
-import type { Discipline, SplitTitle } from '@/content/site'
+import type { Discipline } from '@/content/site'
 import './SectionIntro.css'
 
 interface SectionIntroProps {
   /** Numeración editorial, p. ej. "01 — Nosotras". */
   number: string
   kicker?: string
-  /** Texto o título en dos tramos; el segundo va en itálica y con acento. */
-  title: ReactNode | SplitTitle
+  title: ReactNode
+  titleAccent?: string
   intro?: string
-  /** El párrafo de entrada pasa a una columna propia, a la derecha del título. */
-  introAside?: boolean
-  /** Filete corto bajo el título, con el color de la disciplina. */
-  rule?: Discipline
+  introInSideColumn?: boolean
+  ruleTone?: Discipline
   /** Variante para planos oscuros. */
   invert?: boolean
-}
-
-function isSplit(title: ReactNode | SplitTitle): title is SplitTitle {
-  return typeof title === 'object' && title !== null && 'lead' in title && 'accent' in title
 }
 
 export function SectionIntro({
   number,
   kicker,
   title,
+  titleAccent,
   intro,
-  introAside = false,
-  rule,
+  introInSideColumn = false,
+  ruleTone,
   invert = false,
 }: SectionIntroProps) {
   const classes = [
     'section-intro',
     invert && 'section-intro--invert',
-    introAside && 'section-intro--aside',
+    introInSideColumn && 'section-intro--aside',
   ]
     .filter(Boolean)
     .join(' ')
@@ -45,16 +40,19 @@ export function SectionIntro({
         <div className="section-intro__heading">
           {kicker && <p className="kicker">{kicker}</p>}
           <h2 className="section-intro__title">
-            {isSplit(title) ? (
+            {title}
+            {titleAccent && (
               <>
-                {title.lead} <em>{title.accent}</em>
+                {' '}
+                <em>{titleAccent}</em>
               </>
-            ) : (
-              title
             )}
           </h2>
-          {rule && (
-            <span className={`section-intro__rule section-intro__rule--${rule}`} aria-hidden="true" />
+          {ruleTone && (
+            <span
+              className={`section-intro__rule section-intro__rule--${ruleTone}`}
+              aria-hidden="true"
+            />
           )}
         </div>
         {intro && <p className="section-intro__lead">{intro}</p>}

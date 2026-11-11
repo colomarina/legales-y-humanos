@@ -6,7 +6,7 @@ import './Hero.css'
 export function Hero() {
   return (
     <section className="hero plane--deep" id="inicio">
-      <Geometry variant="hero" />
+      <Geometry />
 
       <div className="container hero__inner">
         <ul className="hero__eyebrow">
@@ -40,8 +40,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Fotografía real del estudio dentro del círculo de la marca. Es la
-          imagen principal de la página, así que no se difiere la carga. */}
       <figure className="hero__media">
         <span className="hero__ring" aria-hidden="true" />
         <img

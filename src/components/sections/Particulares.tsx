@@ -19,7 +19,7 @@ export function Particulares() {
           kicker={particulares.kicker}
           title={particulares.title}
           intro={particulares.intro}
-          rule="rrhh"
+          ruleTone="rrhh"
           invert
         />
 
@@ -39,10 +39,10 @@ export function Particulares() {
                 <span className="particulares__icon">
                   <Icon name={service.icon} />
                 </span>
-                <span className="particulares__body">
+                <div className="particulares__body">
                   <h3 className="particulares__title">{service.title}</h3>
                   <p className="particulares__copy">{service.text}</p>
-                </span>
+                </div>
                 <Arrow />
               </a>
             </li>

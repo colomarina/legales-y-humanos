@@ -54,7 +54,6 @@
   color: var(--lh-blue);
 }
 
-/* Todo el texto queda en la columna izquierda; la derecha es de la foto. */
 .hero__inner > * {
   max-width: min(48rem, 52%);
 }
@@ -93,9 +92,6 @@
   margin-top: var(--lh-space-lg);
 }
 
-/* ---------- Fotografía ---------- */
-/* Círculo grande que se sale por la derecha, con un filete beige desfasado
-   hacia la izquierda: la geometría de la marca, ahora con el estudio real. */
 .hero__media {
   position: absolute;
   z-index: 0;
@@ -114,8 +110,6 @@
   object-fit: cover;
   object-position: 40% 50%;
   border-radius: 50%;
-  /* Baja apenas el brillo de la pared blanca para que conviva con el plano
-     oscuro sin quitarle protagonismo al título. */
   filter: brightness(0.9) saturate(0.95);
 }
 
@@ -157,8 +151,6 @@
     max-width: none;
   }
 
-  /* En una columna la foto vuelve al flujo, debajo de las acciones, y se
-     sigue saliendo por la derecha. */
   .hero__media {
     position: relative;
     top: auto;

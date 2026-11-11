@@ -12,9 +12,6 @@
   mask-size: contain;
 }
 
-/* El aspect-ratio es el del viewBox de cada SVG, para reservar el alto exacto
-   y no provocar salto de maqueta mientras carga. Los SVG se vectorizaron a
-   partir del PDF final de Canva (noviembre 2026). */
 .logo--monograma {
   aspect-ratio: 1920 / 1479;
   -webkit-mask-image: url('/monograma.svg');

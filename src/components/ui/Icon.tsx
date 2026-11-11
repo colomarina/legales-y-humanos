@@ -1,11 +1,8 @@
-/**
- * Íconos de línea para las tarjetas de servicios.
- * Trazo de 1.5 sobre una grilla de 24, en `currentColor`, para que tomen el
- * color de la tinta del plano. Siempre decorativos: el título los nombra.
- */
+import type { ReactNode } from 'react'
+
 export type IconName = 'people' | 'scale' | 'layers' | 'person' | 'coins' | 'document' | 'grid'
 
-const paths: Record<IconName, React.ReactNode> = {
+const paths: Record<IconName, ReactNode> = {
   people: (
     <>
       <circle cx="9" cy="8" r="3.5" />

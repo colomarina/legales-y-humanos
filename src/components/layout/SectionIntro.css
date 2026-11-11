@@ -34,7 +34,6 @@
   line-height: var(--lh-leading-text);
 }
 
-/* La segunda mitad del título va en itálica y con el acento de la marca. */
 .section-intro__title em {
   display: block;
   color: var(--lh-warm-display);
@@ -56,8 +55,6 @@
   background: var(--lh-blue);
 }
 
-/* Entrada en columna propia: título a la izquierda, párrafo a la derecha,
-   separados por un filete vertical. */
 .section-intro--aside .section-intro__body {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);

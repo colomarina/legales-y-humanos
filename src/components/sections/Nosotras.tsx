@@ -30,7 +30,8 @@ export function Nosotras() {
         <SectionIntro
           number={nosotras.number}
           title={nosotras.title}
-          rule="juridico"
+          titleAccent={nosotras.titleAccent}
+          ruleTone="juridico"
         />
 
         <div className="nosotras__profiles">
@@ -49,8 +50,6 @@ export function Nosotras() {
             <span className="founders-banner__rule" aria-hidden="true" />
             <span className="founders-banner__caption">{nosotras.banner.caption}</span>
           </div>
-          {/* La foto entra recortada por un arco: el mismo gesto del círculo
-              de la marca, ahora con las dos profesionales adentro. */}
           <figure className="founders-banner__media">
             <img
               src={nosotras.banner.photo.src}

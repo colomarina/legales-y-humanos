@@ -20,3 +20,29 @@ El autor (`--author`) de cada commit es la persona que lo hace, nunca la herrami
 
 Mensajes de commit en español: título corto en infinitivo o imperativo, y cuerpo
 explicando el porqué cuando el cambio no es obvio.
+
+## Convenciones de código
+
+**No se escriben comentarios.** El código tiene que explicarse solo: si algo necesita
+una aclaración, se extrae una función o una constante con nombre, se renombra una
+variable, o se parte la expresión en pasos nombrados. Si aun así la información no
+entra en el código, va a la descripción del PR, nunca al archivo.
+
+La única excepción son las directivas de herramientas (`eslint-disable`,
+`@ts-expect-error`, `prettier-ignore`, `'use client'` y equivalentes), que no son
+prosa sino instrucciones que cambian el comportamiento del compilador o del linter.
+
+## Código de color de la marca
+
+Los tonos no son decorativos: identifican la disciplina de cada servicio.
+
+| Tono | Significado | Dónde |
+|---|---|---|
+| `warm` (beige) | Recursos Humanos | `ButtonTone`, `Discipline: 'rrhh'` |
+| `blue` (azul) | Asesoramiento jurídico | `ButtonTone`, `Discipline: 'juridico'` |
+| `paper` | Contorno sobre un plano de color | solo `ButtonTone` |
+| `outline` | Contorno claro sobre el plano oscuro, acción secundaria | solo `ButtonTone` |
+
+`--lh-warm-display` (#ad7944) es el beige corregido para texto: el beige de marca
+sobre papel da 1.9:1 y no es legible. Al elegir un color para texto, verificá el
+contraste antes de sumarlo a `tokens.css`.

@@ -2,8 +2,6 @@
  * Contenido del sitio.
  * -----------------------------------------------------------------------------
  * Todos los textos provienen del proyecto /estructura, aprobado por las clientas.
- * Nosotras, Empresas y Particulares se actualizaron con los bocetos que las
- * clientas enviaron en noviembre de 2026.
  * No se inventa informacion: lo que falta queda marcado con `pendiente: true`.
  */
 
@@ -11,13 +9,6 @@ import type { IconName } from '@/components/ui/Icon'
 
 export type Discipline = 'rrhh' | 'juridico'
 
-/** Título de sección en dos tramos: el segundo va en itálica y con acento. */
-export interface SplitTitle {
-  lead: string
-  accent: string
-}
-
-/** Ruta a un archivo de /public respetando la base del sitio (GitHub Pages). */
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 export interface Photo {
@@ -111,7 +102,8 @@ export const hero = {
 
 export const nosotras = {
   number: '01 — Nosotras',
-  title: { lead: 'Las profesionales detrás de', accent: 'Legales y Humanos.' } satisfies SplitTitle,
+  title: 'Las profesionales detrás de',
+  titleAccent: 'Legales y Humanos.',
   profiles: [
     {
       name: 'Antonella Baldaro',
@@ -156,7 +148,8 @@ export const nosotras = {
 export const empresas = {
   number: '02 — Empresas',
   kicker: 'Servicios integrales',
-  title: { lead: '¿Cómo podemos acompañar', accent: 'a tu empresa?' } satisfies SplitTitle,
+  title: '¿Cómo podemos acompañar',
+  titleAccent: 'a tu empresa?',
   intro:
     'Brindamos servicios de Recursos Humanos y asesoramiento jurídico laboral, adaptados a las necesidades de cada organización.',
   services: [

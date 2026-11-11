@@ -6,10 +6,6 @@ interface PortraitProps {
   photo: Photo
 }
 
-/**
- * Retrato de cada profesional. El fondo del marco lleva el tono de su
- * disciplina y queda a la vista mientras la imagen carga.
- */
 export function Portrait({ tone, photo }: PortraitProps) {
   return (
     <figure className={`portrait portrait--${tone}`}>

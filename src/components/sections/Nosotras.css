@@ -118,8 +118,6 @@
   text-transform: uppercase;
 }
 
-/* El borde izquierdo de la foto es un arco de elipse; el filete beige lo
-   acompaña un poco por fuera, como en el hero. */
 .founders-banner__media {
   position: relative;
   margin: 0;
@@ -173,7 +171,6 @@
     aspect-ratio: 4 / 3;
   }
 
-  /* En una columna el arco pasa al borde inferior de la foto. */
   .founders-banner__media img {
     clip-path: ellipse(120% 100% at 50% 0%);
   }

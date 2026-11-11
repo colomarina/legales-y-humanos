@@ -36,9 +36,6 @@
   --lh-blue: #7bb4c2;
   --lh-blue-soft: #dcebee;
   --lh-blue-text: #3f707b; /* versión legible sobre papel — 5.2:1 */
-  /* Acento para títulos grandes sobre papel (la mitad en itálica de los h2).
-     El beige puro queda en 1.9:1; este tono da 3.5:1, el mínimo de WCAG para
-     texto grande, sin caer en el marrón de `--lh-warm-text`. */
   --lh-warm-display: #ad7944;
 
   --lh-focus: #e1af7e;
@@ -99,8 +96,8 @@
 
   /* ---------- Formas ---------- */
   --lh-radius-pill: 999px;
-  --lh-radius: 14px; /* tarjetas y fotografías */
-  --lh-radius-sm: 10px; /* recuadro de íconos */
+  --lh-radius: 14px;
+  --lh-radius-sm: 10px;
   --lh-hairline: 1px;
 
   /* ---------- Movimiento ---------- */

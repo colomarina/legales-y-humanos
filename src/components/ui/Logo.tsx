@@ -9,13 +9,6 @@ interface LogoProps {
   label?: string
 }
 
-/**
- * Logo de Bogarsukoff & Baldaro.
- *
- * Se dibuja con `mask-image` y no con `<img>`: como máscara, el color lo pone
- * `currentColor`, así que el mismo archivo sirve beige sobre oscuro, tinta sobre papel o azul, y hereda
- * el color de la piel activa de la cabecera sin exportar variantes.
- */
 export function Logo({ variant = 'monograma', className, label }: LogoProps) {
   return (
     <span

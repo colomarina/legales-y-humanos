@@ -18,15 +18,14 @@ export function Empresas() {
           number={empresas.number}
           kicker={empresas.kicker}
           title={empresas.title}
+          titleAccent={empresas.titleAccent}
           intro={empresas.intro}
-          introAside
+          introInSideColumn
         />
 
         <ul className="service-cards" data-reveal>
           {empresas.services.map((service) => (
             <li key={service.title}>
-              {/* Enlace real: la tarjeta responde al hover, así que tiene que
-                  conducir a la consulta, como en la propuesta visual aprobada. */}
               <a
                 className={`service-card service-card--${service.tone}`}
                 href={empresas.cta.href}
@@ -35,10 +34,10 @@ export function Empresas() {
                 <span className="service-card__icon">
                   <Icon name={service.icon} />
                 </span>
-                <span className="service-card__body">
+                <div className="service-card__body">
                   <h3 className="service-card__title">{service.title}</h3>
                   <p className="service-card__copy">{service.text}</p>
-                </span>
+                </div>
                 <span className="service-card__arrow">
                   <Arrow />
                 </span>

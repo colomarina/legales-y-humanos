@@ -69,9 +69,6 @@
   }
 }
 
-/* Acción secundaria sobre plano oscuro: contorno claro, texto en sans como el
-   botón de contacto de la cabecera. El hover se rellena de papel en lugar de
-   tinta, que sobre el plano oscuro quedaría invisible. */
 .button--outline {
   background: transparent;
   border-color: var(--lh-ink-invert);
