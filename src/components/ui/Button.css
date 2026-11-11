@@ -6,6 +6,7 @@
   min-height: 56px;
   padding: var(--lh-space-sm) var(--lh-space-md);
   border: var(--lh-hairline) solid transparent;
+  border-radius: var(--lh-radius-xs);
   font-family: var(--lh-serif);
   font-size: var(--lh-display-xs);
   font-weight: 500;

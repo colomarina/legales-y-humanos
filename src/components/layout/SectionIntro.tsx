@@ -38,7 +38,7 @@ export function SectionIntro({
 
   return (
     <div className={classes} data-reveal>
-      <span className="section-intro__number">{number}</span>
+      <span className="section-intro__number kicker--ruled">{number}</span>
       <div className="section-intro__body">
         <div className="section-intro__heading">
           {kicker && <p className="kicker">{kicker}</p>}

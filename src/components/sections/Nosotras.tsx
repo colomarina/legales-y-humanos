@@ -11,7 +11,7 @@ function ProfileCard({ profile }: { profile: Profile }) {
         <Portrait tone={profile.tone} photo={profile.photo} />
       </div>
       <div className="profile__body">
-        <p className="kicker profile__discipline">{profile.discipline}</p>
+        <p className="kicker kicker--ruled profile__discipline">{profile.discipline}</p>
         <h3 className="profile__name">
           {profile.name}
           <span aria-hidden="true">.</span>

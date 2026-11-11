@@ -10,9 +10,9 @@
   position: absolute;
   display: block;
   right: 0;
-  bottom: -130px;
-  width: 180px;
-  height: 460px;
+  bottom: -170px;
+  width: 120px;
+  height: 300px;
   background: var(--lh-blue);
   opacity: 0.8;
   transform: rotate(34deg);
@@ -20,8 +20,8 @@
 
 @media (max-width: 650px) {
   .geometry__bar {
-    width: 110px;
-    height: 300px;
-    bottom: -110px;
+    width: 80px;
+    height: 220px;
+    bottom: -130px;
   }
 }

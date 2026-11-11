@@ -140,6 +140,17 @@ svg {
   text-transform: uppercase;
 }
 
+.kicker--ruled::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: var(--lh-hairline);
+  margin-left: var(--lh-space-sm);
+  vertical-align: middle;
+  background: currentColor;
+  opacity: 0.5;
+}
+
 /* ---------- Utilidades ---------- */
 .visually-hidden {
   position: absolute;
