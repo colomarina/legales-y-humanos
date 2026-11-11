@@ -71,7 +71,7 @@
 
 .service-card__title {
   font-family: var(--lh-serif);
-  font-size: var(--lh-display-xs);
+  font-size: var(--lh-display-card);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.02em;

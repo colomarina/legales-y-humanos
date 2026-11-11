@@ -50,8 +50,8 @@
   grid-area: icon;
   display: grid;
   place-items: center;
-  width: 68px;
-  height: 68px;
+  width: 76px;
+  height: 76px;
   border-radius: var(--lh-radius-sm);
   color: var(--lh-ink);
 }
@@ -65,8 +65,8 @@
 }
 
 .particulares__icon .icon {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
 }
 
 .particulares__body {
@@ -77,7 +77,7 @@
 
 .particulares__title {
   font-family: var(--lh-serif);
-  font-size: var(--lh-display-xs);
+  font-size: var(--lh-display-card);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.02em;
