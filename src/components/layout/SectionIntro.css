@@ -72,6 +72,29 @@
   border-left: var(--lh-hairline) solid var(--lh-line-warm);
 }
 
+.section-intro--center {
+  grid-template-columns: 1fr;
+  gap: var(--lh-space-md);
+}
+
+.section-intro--center .section-intro__number {
+  justify-self: start;
+  padding-top: 0;
+}
+
+.section-intro--center .section-intro__body {
+  text-align: center;
+}
+
+.section-intro--center .section-intro__title {
+  max-width: none;
+  margin-inline: auto;
+}
+
+.section-intro--center .section-intro__rule {
+  margin-inline: auto;
+}
+
 /* ---------- Sobre plano oscuro ---------- */
 .section-intro--invert .section-intro__title em {
   color: var(--lh-warm);

@@ -32,6 +32,7 @@ export function Nosotras() {
           title={nosotras.title}
           titleAccent={nosotras.titleAccent}
           ruleAccent="blue"
+          align="center"
         />
 
         <div className="nosotras__profiles">

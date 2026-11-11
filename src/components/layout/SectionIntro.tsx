@@ -13,6 +13,7 @@ interface SectionIntroProps {
   ruleAccent?: Accent
   /** Variante para planos oscuros. */
   invert?: boolean
+  align?: 'start' | 'center'
 }
 
 export function SectionIntro({
@@ -24,11 +25,13 @@ export function SectionIntro({
   introAside = false,
   ruleAccent,
   invert = false,
+  align = 'start',
 }: SectionIntroProps) {
   const classes = [
     'section-intro',
     invert && 'section-intro--invert',
     introAside && 'section-intro--aside',
+    align === 'center' && 'section-intro--center',
   ]
     .filter(Boolean)
     .join(' ')

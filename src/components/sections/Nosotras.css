@@ -2,22 +2,24 @@
   display: flex;
   flex-direction: column;
   gap: clamp(var(--lh-space-xl), 7vw, calc(var(--lh-space-2xl) * 1.4));
+  max-width: 68rem;
+  margin-inline: auto;
 }
 
 .profile {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: clamp(var(--lh-space-lg), 6vw, var(--lh-space-2xl));
   align-items: center;
 }
 
 /* El segundo perfil espeja la composición: retrato a la derecha. */
-.profile:nth-child(even) .profile__portrait {
-  order: 2;
+.profile:nth-child(even) {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
 }
 
-.profile__portrait {
-  max-width: 420px;
+.profile:nth-child(even) .profile__portrait {
+  order: 2;
 }
 
 .profile__body {
@@ -56,7 +58,7 @@
 }
 
 .profile__bio {
-  max-width: var(--lh-measure);
+  max-width: none;
   margin-top: var(--lh-space-md);
   padding-left: var(--lh-space-md);
   border-left: 2px solid var(--lh-warm);
@@ -148,7 +150,8 @@
 }
 
 @media (max-width: 900px) {
-  .profile {
+  .profile,
+  .profile:nth-child(even) {
     grid-template-columns: 1fr;
     gap: var(--lh-space-lg);
   }
