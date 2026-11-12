@@ -1,9 +1,11 @@
 .particulares__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--lh-hairline);
-  background: var(--lh-line-invert);
-  border: var(--lh-hairline) solid var(--lh-line-invert);
+  gap: var(--lh-space-md);
+}
+
+.particulares__grid li {
+  display: flex;
 }
 
 .particulares__item {
@@ -14,23 +16,25 @@
     'icon body arrow';
   gap: var(--lh-space-sm) clamp(var(--lh-space-md), 2.5vw, var(--lh-space-lg));
   align-items: center;
-  height: 100%;
+  flex: 1;
   padding: clamp(var(--lh-space-md), 3vw, var(--lh-space-lg));
+  border: var(--lh-hairline) solid var(--lh-line-invert);
+  border-radius: var(--lh-radius);
   background: var(--lh-deep);
   transition:
     background-color var(--lh-dur) var(--lh-ease),
-    box-shadow var(--lh-dur) var(--lh-ease);
+    border-color var(--lh-dur) var(--lh-ease);
 }
 
 .particulares__item:focus-visible {
   background: var(--lh-deep-raised);
-  box-shadow: 0 0 0 var(--lh-hairline) var(--lh-blue);
+  border-color: var(--lh-blue);
 }
 
 @media (hover: hover) {
   .particulares__item:hover {
     background: var(--lh-deep-raised);
-    box-shadow: 0 0 0 var(--lh-hairline) var(--lh-blue);
+    border-color: var(--lh-blue);
   }
 
   .particulares__item:hover .arrow {

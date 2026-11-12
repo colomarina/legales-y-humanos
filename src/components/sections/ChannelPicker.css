@@ -31,6 +31,7 @@
   min-height: 132px;
   padding: var(--lh-space-md);
   border: 2px solid var(--lh-line);
+  border-radius: var(--lh-radius-sm);
   background: transparent;
   color: var(--lh-ink);
   cursor: pointer;
@@ -120,6 +121,7 @@
   gap: var(--lh-space-sm) var(--lh-space-lg);
   margin-top: var(--lh-space-sm);
   padding: var(--lh-space-md);
+  border-radius: var(--lh-radius-sm);
   animation: picker-swap var(--lh-dur-slow) var(--lh-ease);
 }
 
