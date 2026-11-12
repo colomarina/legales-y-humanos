@@ -288,12 +288,17 @@ export const contacto = {
     label: 'Dirección',
     lines: ['Calle 49 n° 876, piso 4, oficina B', 'La Plata, Buenos Aires'],
     mapsLabel: 'Ver en Google Maps',
-    /* Enlace de búsqueda de Maps: no necesita clave de API y funciona aunque
-       la ficha de negocio todavía no esté verificada. Al activarse la ficha,
-       reemplazar por su URL propia. */
-    mapsHref: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-      'Calle 49 876, La Plata, Buenos Aires, Argentina',
-    )}`,
+    mapsHref: 'https://maps.app.goo.gl/jv9MrFxizEy6ukHZ7',
+    map: {
+      title: 'Ubicación del estudio en Google Maps',
+      loadLabel: 'Ver mapa',
+      loadHint: 'Se carga desde Google Maps',
+      previewSrc: asset('fotos/mapa-estudio.webp'),
+      previewCredit: '© OpenStreetMap',
+      embedSrc: `https://www.google.com/maps?q=${encodeURIComponent(
+        'Bogarsukoff & Baldaro Asoc., Calle 49 876, La Plata, Buenos Aires',
+      )}&z=17&output=embed`,
+    },
   },
   modality: {
     label: 'Modalidad',

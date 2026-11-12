@@ -1,0 +1,111 @@
+.office-map {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  margin-top: var(--lh-space-sm);
+  border: var(--lh-hairline) solid var(--lh-line);
+  border-radius: var(--lh-radius);
+  background: var(--lh-neutral);
+}
+
+.office-map__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.office-map__preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(0.8) brightness(1.06) blur(1.5px);
+  transform: scale(1.04);
+  transition:
+    filter var(--lh-dur-slow) var(--lh-ease),
+    transform var(--lh-dur-slow) var(--lh-ease);
+}
+
+.office-map__credit {
+  position: absolute;
+  right: var(--lh-space-2xs);
+  bottom: var(--lh-space-3xs);
+  z-index: 1;
+  color: var(--lh-muted);
+  font-size: 0.6875rem;
+  pointer-events: none;
+}
+
+.office-map__placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lh-space-3xs);
+  width: 100%;
+  height: 100%;
+  padding: var(--lh-space-md);
+  border: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(250, 249, 246, 0.55) 0,
+    rgba(250, 249, 246, 0.15) 60%,
+    transparent 100%
+  );
+  color: var(--lh-ink);
+  cursor: pointer;
+}
+
+.office-map__placeholder:focus-visible {
+  outline: 2px solid var(--lh-focus);
+  outline-offset: -4px;
+  border-radius: var(--lh-radius);
+}
+
+.office-map__pin {
+  box-sizing: content-box;
+  width: 28px;
+  height: 28px;
+  margin-bottom: var(--lh-space-2xs);
+  padding: var(--lh-space-xs);
+  border-radius: 50%;
+  background: var(--lh-blue-text);
+  color: var(--lh-paper);
+  box-shadow: 0 6px 18px rgba(41, 41, 41, 0.22);
+  transition: transform var(--lh-dur) var(--lh-ease);
+}
+
+.office-map__label {
+  padding: var(--lh-space-3xs) var(--lh-space-sm);
+  border-radius: var(--lh-radius-pill);
+  background: var(--lh-paper);
+  box-shadow: 0 2px 10px rgba(41, 41, 41, 0.12);
+  font-size: var(--lh-text-sm);
+  font-weight: 500;
+}
+
+.office-map__hint {
+  color: var(--lh-ink);
+  font-size: var(--lh-text-xs);
+  text-shadow: 0 0 6px var(--lh-paper), 0 0 2px var(--lh-paper);
+}
+
+@media (hover: hover) {
+  .office-map:hover .office-map__preview {
+    filter: grayscale(0.3) contrast(0.9) brightness(1.04) blur(1px);
+    transform: scale(1.08);
+  }
+
+  .office-map__placeholder:hover .office-map__pin {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .office-map__preview {
+    transition: none;
+  }
+}

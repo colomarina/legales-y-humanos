@@ -5,6 +5,7 @@ import { Logo } from '@/components/ui/Logo'
 import { useContactChannel } from '@/context/ContactChannelContext'
 import { ChannelPicker } from './ChannelPicker'
 import { ContactForm } from './ContactForm'
+import { OfficeMap } from './OfficeMap'
 import './Contacto.css'
 
 export function Contacto() {
@@ -43,6 +44,7 @@ export function Contacto() {
                   </span>
                 ))}
               </p>
+              <OfficeMap />
               <a
                 className="contacto__maps"
                 href={contacto.address.mapsHref}
