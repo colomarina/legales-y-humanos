@@ -115,7 +115,7 @@
 
 .hero__ring {
   position: absolute;
-  inset: -3% 4% -3% -5%;
+  inset: -4px;
   border: var(--lh-hairline) solid rgba(225, 175, 126, 0.75);
   border-radius: 50%;
 }
