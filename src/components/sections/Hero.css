@@ -3,7 +3,6 @@
   min-height: min(100svh, 860px);
   display: flex;
   flex-direction: column;
-  /* El padding superior deja libre la cabecera fija. */
   padding-block: calc(var(--lh-header-h) + var(--lh-space-2xl)) var(--lh-space-xl);
   overflow: hidden;
 }
