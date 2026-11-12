@@ -208,7 +208,7 @@
     --veil-top: 0.7;
     --veil-mid: 0.8;
     --veil-bottom: 0.95;
-    --photo-x: calc(65cqw - 65.5%);
+    --photo-x: max(calc(65cqw - 65.5%), calc(100cqw - 100%));
     --photo-y: 0%;
 
     inset: var(--lh-header-h) 0 0;
