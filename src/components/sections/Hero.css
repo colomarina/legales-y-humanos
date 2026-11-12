@@ -13,23 +13,32 @@
 }
 
 .hero__eyebrow {
+  --eyebrow-rule: 28px;
+  --eyebrow-rule-room: calc(var(--eyebrow-rule) + 2 * var(--lh-space-md));
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--lh-space-sm) var(--lh-space-md);
+  gap: var(--lh-space-sm) var(--eyebrow-rule-room);
+  overflow: hidden;
   color: var(--lh-muted-invert);
   font-size: var(--lh-kicker);
   letter-spacing: var(--lh-tracking-kicker);
   text-transform: uppercase;
 }
 
-.hero__eyebrow li:not(:last-child)::after {
+.hero__eyebrow li {
+  display: flex;
+  align-items: center;
+  margin-left: calc(var(--eyebrow-rule-room) * -1);
+}
+
+.hero__eyebrow li::before {
   content: '';
-  display: inline-block;
-  width: 28px;
+  flex: none;
+  width: var(--eyebrow-rule);
   height: var(--lh-hairline);
-  margin-left: var(--lh-space-md);
-  vertical-align: middle;
+  margin-inline: var(--lh-space-md);
   background: currentColor;
   opacity: 0.5;
 }
@@ -244,6 +253,28 @@
       rgba(37, 37, 37, var(--veil-mid)) 50%,
       rgba(37, 37, 37, var(--veil-bottom)) 100%
     );
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) and (min-height: 900px) {
+  .hero__media {
+    --veil-mid: 0.78;
+    --veil-bottom: 0.35;
+  }
+
+  .hero__actions {
+    margin-top: var(--lh-space-xl);
+  }
+
+  .hero__actions .button {
+    width: auto;
+    padding-inline: var(--lh-space-md);
+  }
+}
+
+@media (max-height: 500px) {
+  .hero__media {
+    --photo-y: -6%;
   }
 }
 
