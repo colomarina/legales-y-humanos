@@ -40,3 +40,29 @@
 .brand--light .brand__sub {
   color: var(--lh-muted-invert);
 }
+
+@media (max-width: 389px) {
+  .brand__main,
+  .brand__sub {
+    white-space: nowrap;
+  }
+
+  .brand__main {
+    font-size: 1.1rem;
+  }
+
+  .brand__sub {
+    letter-spacing: 0.09em;
+  }
+}
+
+@media (max-width: 359px) {
+  .brand__main {
+    font-size: 0.94rem;
+  }
+
+  .brand__sub {
+    font-size: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+}
