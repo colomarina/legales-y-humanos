@@ -143,9 +143,9 @@ export const nosotras = {
     caption: 'Legales y Humanos · La Plata',
     photo: {
       src: asset('fotos/antonella-y-brenda.webp'),
-      alt: 'Antonella Baldaro y Brenda Bogarsukoff juntas en el estudio',
+      alt: 'Antonella Baldaro y Brenda Bogarsukoff sentadas juntas a una mesa del estudio',
       width: 900,
-      height: 900,
+      height: 1200,
     } satisfies Photo,
   },
 } as const
@@ -294,7 +294,7 @@ export const contacto = {
   channelsLabel: '¿Sobre qué querés consultarnos?',
   address: {
     label: 'Dirección',
-    lines: ['Calle 49 n° 876, piso 4, oficina B', 'La Plata, Buenos Aires'],
+    lines: ['Calle 49 n° 876, piso 4, oficinas B y C', 'La Plata, Buenos Aires'],
     mapsLabel: 'Ver en Google Maps',
     mapsHref: 'https://maps.app.goo.gl/jv9MrFxizEy6ukHZ7',
     map: {
