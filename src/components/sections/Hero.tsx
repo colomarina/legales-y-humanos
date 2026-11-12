@@ -42,15 +42,17 @@ export function Hero() {
 
       <figure className="hero__media">
         <span className="hero__ring" aria-hidden="true" />
-        <img
-          className="hero__photo"
-          src={hero.photo.src}
-          alt={hero.photo.alt}
-          width={hero.photo.width}
-          height={hero.photo.height}
-          fetchPriority="high"
-          decoding="async"
-        />
+        <span className="hero__frame">
+          <img
+            className="hero__photo"
+            src={hero.photo.src}
+            alt={hero.photo.alt}
+            width={hero.photo.width}
+            height={hero.photo.height}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </span>
       </figure>
     </section>
   )
