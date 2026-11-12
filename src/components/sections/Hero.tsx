@@ -1,13 +1,12 @@
 import { hero } from '@/content/site'
 import { Button } from '@/components/ui/Button'
-import { Geometry } from '@/components/ui/Geometry'
 import './Hero.css'
+
+const WIDE_SCREEN = '(min-width: 901px) and (min-height: 501px)'
 
 export function Hero() {
   return (
     <section className="hero plane--deep" id="inicio">
-      <Geometry />
-
       <div className="container hero__inner">
         <ul className="hero__eyebrow">
           {hero.eyebrow.map((item) => (
@@ -42,8 +41,8 @@ export function Hero() {
       </div>
 
       <figure className="hero__media">
-        <span className="hero__ring" aria-hidden="true" />
-        <span className="hero__frame">
+        <picture className="hero__frame">
+          <source media={WIDE_SCREEN} srcSet={hero.photoWideSrcSet} sizes="max(100vw, 145vh)" />
           <img
             className="hero__photo"
             src={hero.photo.src}
@@ -53,7 +52,7 @@ export function Hero() {
             fetchPriority="high"
             decoding="async"
           />
-        </span>
+        </picture>
         <span className="hero__veil" aria-hidden="true" />
       </figure>
     </section>

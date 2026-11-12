@@ -101,6 +101,9 @@ export const hero = {
     width: 1200,
     height: 1200,
   } satisfies Photo,
+  photoWideSrcSet: [1280, 1920, 2560]
+    .map((width) => `${asset(`fotos/estudio-ancho-${width}.webp`)} ${width}w`)
+    .join(', '),
 } as const
 
 export const nosotras = {

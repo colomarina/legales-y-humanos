@@ -118,3 +118,13 @@ El script `../herramientas/visual-check.mjs` (fuera del repo, Playwright con Chr
 - Los valores exactos de tamaño, sangrado, distancia al header y encuadre por rango, dentro de los requisitos.
 - La técnica del oscurecimiento en B (degradé, capa o `filter`), mientras cumpla el contraste.
 - Cómo se reestructura el markup de `Hero.tsx`, si hace falta. Quedó así: un `<figure>` con el aro, un `<span class="hero__frame">` que recorta la foto y un `<span class="hero__veil">` que oscurece en B.
+
+## Cambio del 2026-11-12: foto de fondo también en escritorio
+
+Las clientas eligieron, sobre una prueba, la foto de fondo en escritorio en lugar del círculo. Reemplaza los puntos 7, 8, 10 y 13 (círculo, encuadre en el círculo, barra celeste y aro).
+
+- **Foto:** `estudio-2.jpeg` recortada apaisada (16:9) desde el original de 3328px, en `fotos/estudio-ancho-{1280,1920,2560}.webp`. Se sirve con `<picture>` solo desde 901px de ancho y 501px de alto; debajo sigue la foto cuadrada del celular.
+- **Oscurecimiento:** de izquierda a derecha, oscuro bajo el texto y claro sobre el logo.
+- **Encuadre:** la foto va arriba a la derecha. En escritorios angostos puede quedar hasta un 20% más baja que el Hero y se funde con el fondo, para que el logo no se acerque al título.
+- **Sin círculo, aro ni barra celeste:** se borra el componente `Geometry`.
+- **Chequeos de escritorio:** foto bajo el header, foto ancha con resolución suficiente, logo completo, logo a ≥16px de cualquier línea de texto o botón, y contraste (≥4.5 texto chico, ≥3 grande) contra el peor caso blanco.
