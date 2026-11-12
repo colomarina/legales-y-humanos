@@ -91,6 +91,8 @@ export const hero = {
   leadLines: ['Dos profesiones.', 'Una mirada integral.'],
   description:
     'Una consultora jurídica y de Recursos Humanos que combina conocimiento, experiencia y cercanía para acompañar a empresas y particulares.',
+  descriptionShort:
+    'Una consultora jurídica y de Recursos Humanos que combina conocimiento, experiencia y cercanía.',
   primaryCta: { label: 'Conocé nuestros servicios', href: '#empresas' },
   secondaryCta: { label: 'Contactanos', href: '#contacto' },
   photo: {

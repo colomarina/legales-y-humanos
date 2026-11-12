@@ -18,10 +18,8 @@
   transform: rotate(34deg);
 }
 
-@media (max-width: 650px) {
+@media (max-width: 900px), (max-height: 500px) {
   .geometry__bar {
-    width: 80px;
-    height: 220px;
-    bottom: -130px;
+    display: none;
   }
 }

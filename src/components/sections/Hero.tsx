@@ -30,7 +30,8 @@ export function Hero() {
             <br />
             <em>{hero.leadLines[1]}</em>
           </p>
-          <p className="hero__description">{hero.description}</p>
+          <p className="hero__description hero__description--full">{hero.description}</p>
+          <p className="hero__description hero__description--short">{hero.descriptionShort}</p>
           <div className="hero__actions">
             <Button href={hero.primaryCta.href}>{hero.primaryCta.label}</Button>
             <Button href={hero.secondaryCta.href} tone="outline">
@@ -53,6 +54,7 @@ export function Hero() {
             decoding="async"
           />
         </span>
+        <span className="hero__veil" aria-hidden="true" />
       </figure>
     </section>
   )
