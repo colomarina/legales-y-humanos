@@ -85,7 +85,6 @@ export const mobileNavLinks: NavLink[] = [
 ]
 
 export const hero = {
-  eyebrow: ['Consultora Jurídica', 'Recursos Humanos', 'La Plata'],
   /* "Dos profesiones. Una mirada integral." partido en dos para el corte de
      línea deliberado de la dirección visual. El acento va en la segunda. */
   leadLines: ['Dos profesiones.', 'Una mirada integral.'],

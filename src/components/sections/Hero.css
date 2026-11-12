@@ -12,39 +12,7 @@
   z-index: 2;
 }
 
-.hero__eyebrow {
-  --eyebrow-rule: 28px;
-  --eyebrow-rule-room: calc(var(--eyebrow-rule) + 2 * var(--lh-space-md));
-
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--lh-space-sm) var(--eyebrow-rule-room);
-  overflow: hidden;
-  color: var(--lh-ink-invert);
-  font-size: var(--lh-kicker);
-  letter-spacing: var(--lh-tracking-kicker);
-  text-transform: uppercase;
-}
-
-.hero__eyebrow li {
-  display: flex;
-  align-items: center;
-  margin-left: calc(var(--eyebrow-rule-room) * -1);
-}
-
-.hero__eyebrow li::before {
-  content: '';
-  flex: none;
-  width: var(--eyebrow-rule);
-  height: var(--lh-hairline);
-  margin-inline: var(--lh-space-md);
-  background: currentColor;
-  opacity: 0.5;
-}
-
 .hero__title {
-  margin-top: var(--lh-space-md);
   font-family: var(--lh-serif);
   font-size: clamp(3.75rem, 8.4vw, 9rem);
   font-weight: 500;

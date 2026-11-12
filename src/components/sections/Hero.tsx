@@ -8,12 +8,6 @@ export function Hero() {
   return (
     <section className="hero plane--deep" id="inicio">
       <div className="container hero__inner">
-        <ul className="hero__eyebrow">
-          {hero.eyebrow.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-
         <h1 className="hero__title" data-reveal>
           Legales <i>y</i>
           <br />
