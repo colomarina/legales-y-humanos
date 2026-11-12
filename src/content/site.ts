@@ -246,6 +246,9 @@ export const metodo = {
 const EMAIL_EMPRESAS = 'Bogarsukoffbaldaroasoc@gmail.com'
 const EMAIL_PARTICULARES = 'consultas.estudiobb@gmail.com'
 
+const whatsappLink = (number: string, message: string) =>
+  `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+
 /**
  * Los dos recorridos de contacto, con el color de su disciplina.
  * Ambos teléfonos son celulares, así que los dos ofrecen WhatsApp y llamada.
@@ -260,7 +263,10 @@ export const contactChannels: ContactChannel[] = [
     email: EMAIL_EMPRESAS,
     phone: '221 579-0446',
     phoneHref: '+5492215790446',
-    whatsapp: 'https://wa.me/5492215790446',
+    whatsapp: whatsappLink(
+      '5492215790446',
+      'Hola, les escribo desde la web por una consulta para mi empresa.',
+    ),
   },
   {
     id: 'particulares',
@@ -271,7 +277,10 @@ export const contactChannels: ContactChannel[] = [
     email: EMAIL_PARTICULARES,
     phone: '221 435-3373',
     phoneHref: '+5492214353373',
-    whatsapp: 'https://wa.me/5492214353373',
+    whatsapp: whatsappLink(
+      '5492214353373',
+      'Hola, les escribo desde la web por una consulta como particular.',
+    ),
   },
 ]
 

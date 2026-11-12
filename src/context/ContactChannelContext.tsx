@@ -3,6 +3,7 @@ import { contactChannels, type ContactChannel } from '@/content/site'
 
 interface ContactChannelValue {
   active: ContactChannel
+  hasChosen: boolean
   select: (id: ContactChannel['id']) => void
 }
 
@@ -19,15 +20,20 @@ const ContactChannelContext = createContext<ContactChannelValue | null>(null)
 export function ContactChannelProvider({ children }: { children: ReactNode }) {
   // Empresas es el recorrido por defecto: es el servicio principal de la consultora.
   const [activeId, setActiveId] = useState<ContactChannel['id']>(contactChannels[0].id)
+  const [hasChosen, setHasChosen] = useState(false)
 
-  const select = useCallback((id: ContactChannel['id']) => setActiveId(id), [])
+  const select = useCallback((id: ContactChannel['id']) => {
+    setActiveId(id)
+    setHasChosen(true)
+  }, [])
 
   const value = useMemo<ContactChannelValue>(
     () => ({
       active: contactChannels.find((channel) => channel.id === activeId) ?? contactChannels[0],
+      hasChosen,
       select,
     }),
-    [activeId, select],
+    [activeId, hasChosen, select],
   )
 
   return <ContactChannelContext.Provider value={value}>{children}</ContactChannelContext.Provider>
