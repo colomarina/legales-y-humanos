@@ -1,4 +1,5 @@
 import { useRef, useState, type FormEvent } from 'react'
+import { flushSync } from 'react-dom'
 import { contacto, type ContactChannel, type Discipline } from '@/content/site'
 import { Arrow } from '@/components/ui/Arrow'
 import { buttonClassName, type ButtonTone } from '@/components/ui/Button'
@@ -87,9 +88,9 @@ export function ContactForm({ channel }: ContactFormProps) {
     const data = new FormData(event.currentTarget)
 
     const found = validate(data)
-    setErrors(found)
+    flushSync(() => setErrors(found))
     if (Object.keys(found).length > 0) {
-      event.currentTarget.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus()
+      formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus()
       return
     }
 

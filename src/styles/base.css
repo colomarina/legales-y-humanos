@@ -140,6 +140,21 @@ svg {
   text-transform: uppercase;
 }
 
+.kicker--ruled {
+  display: flex;
+  align-items: center;
+  gap: var(--lh-space-sm);
+}
+
+.kicker--ruled::after {
+  content: '';
+  flex: none;
+  width: 40px;
+  height: var(--lh-hairline);
+  background: currentColor;
+  opacity: 0.5;
+}
+
 /* ---------- Utilidades ---------- */
 .visually-hidden {
   position: absolute;

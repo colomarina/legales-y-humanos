@@ -1,6 +1,7 @@
 import { particulares } from '@/content/site'
 import { Arrow } from '@/components/ui/Arrow'
 import { Button } from '@/components/ui/Button'
+import { Icon } from '@/components/ui/Icon'
 import { SectionIntro } from '@/components/layout/SectionIntro'
 import { useContactChannel } from '@/context/ContactChannelContext'
 import './Particulares.css'
@@ -18,23 +19,28 @@ export function Particulares() {
           kicker={particulares.kicker}
           title={particulares.title}
           intro={particulares.intro}
+          ruleAccent="warm"
           invert
         />
 
         <ul className="particulares__grid" data-reveal>
           {particulares.services.map((service, index) => (
-            <li key={service}>
-              {/* Enlace real: el bloque reacciona al hover, así que tiene que llevar
-                  a algún lado. Lleva a la consulta, como en la propuesta visual. */}
+            <li key={service.title}>
               <a
-                className="particulares__item"
+                className={`particulares__item particulares__item--${service.accent}`}
                 href={particulares.cta.href}
                 onClick={goToContact}
               >
                 <span className="particulares__number" aria-hidden="true">
                   0{index + 1}
                 </span>
-                <h3 className="particulares__title">{service}</h3>
+                <span className="particulares__icon">
+                  <Icon name={service.icon} />
+                </span>
+                <div className="particulares__body">
+                  <h3 className="particulares__title">{service.title}</h3>
+                  <p className="particulares__copy">{service.text}</p>
+                </div>
                 <Arrow />
               </a>
             </li>

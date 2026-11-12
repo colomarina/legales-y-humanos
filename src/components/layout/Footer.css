@@ -74,15 +74,16 @@
 @media (max-width: 900px) {
   .footer__top {
     grid-template-columns: 1fr;
-    justify-items: start;
+    justify-items: center;
     gap: var(--lh-space-lg);
   }
 
-  .footer__tagline {
-    text-align: left;
+  .footer__top-link {
+    justify-self: center;
   }
 
-  .footer__top-link {
-    justify-self: start;
+  .footer__bottom {
+    justify-content: center;
+    text-align: center;
   }
 }

@@ -12,16 +12,14 @@
   mask-size: contain;
 }
 
-/* El aspect-ratio es el del PNG ya recortado, para reservar el alto exacto y
-   no provocar salto de maqueta mientras carga. */
 .logo--monograma {
-  aspect-ratio: 332 / 259;
-  -webkit-mask-image: url('/monograma.png');
-  mask-image: url('/monograma.png');
+  aspect-ratio: 1920 / 1479;
+  -webkit-mask-image: url('/monograma.svg');
+  mask-image: url('/monograma.svg');
 }
 
 .logo--completo {
-  aspect-ratio: 464 / 180;
-  -webkit-mask-image: url('/logo-completo.png');
-  mask-image: url('/logo-completo.png');
+  aspect-ratio: 4989 / 1672;
+  -webkit-mask-image: url('/logo-completo.svg');
+  mask-image: url('/logo-completo.svg');
 }

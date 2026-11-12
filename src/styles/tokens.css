@@ -31,11 +31,13 @@
   /* ---------- Color: acentos de disciplina ---------- */
   /* Beige = Recursos Humanos · Azul = Jurídico */
   --lh-warm: #e1af7e;
+  --lh-warm-light: #ebcba9;
   --lh-warm-soft: #f4e4d5;
   --lh-warm-text: #8a5f2c; /* versión legible sobre papel — 5.3:1 */
   --lh-blue: #7bb4c2;
   --lh-blue-soft: #dcebee;
   --lh-blue-text: #3f707b; /* versión legible sobre papel — 5.2:1 */
+  --lh-warm-display: #ad7944;
 
   --lh-focus: #e1af7e;
   /* Error: terracota en lugar de rojo semáforo, para no romper la paleta.
@@ -53,6 +55,7 @@
   --lh-display-m: clamp(2.5rem, 5vw, 4.5rem); /* h2 de sección */
   --lh-display-s: clamp(1.75rem, 2.8vw, 2.5rem); /* h3 destacado */
   --lh-display-xs: clamp(1.375rem, 1.9vw, 1.75rem); /* título de fila/tarjeta */
+  --lh-display-card: clamp(1.5rem, 2.4vw, 2.125rem);
 
   /* ---------- Tipografía: escala de texto (sans) ---------- */
   /* Nota: la maqueta de Figma usaba 9–11px para texto corrido. La escala se
@@ -95,6 +98,9 @@
 
   /* ---------- Formas ---------- */
   --lh-radius-pill: 999px;
+  --lh-radius: 14px;
+  --lh-radius-sm: 10px;
+  --lh-radius-xs: 6px;
   --lh-hairline: 1px;
 
   /* ---------- Movimiento ---------- */

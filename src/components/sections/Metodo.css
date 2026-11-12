@@ -8,10 +8,13 @@
   --marker-size: 56px;
   --timeline-gap: var(--lh-space-lg);
   --timeline-cols: 4;
+  --step-w: 26ch;
 
   position: relative;
   display: grid;
-  grid-template-columns: repeat(var(--timeline-cols), minmax(0, 1fr));
+  font-size: var(--lh-text-sm);
+  grid-template-columns: repeat(var(--timeline-cols), minmax(0, var(--step-w)));
+  justify-content: space-between;
   gap: var(--timeline-gap);
 }
 
@@ -28,7 +31,10 @@
      la última columna mide (100% - 3 huecos) / 4, así que el margen derecho es
      esa columna menos medio marcador. Si no, la línea sobresale ~240px. */
   right: calc(
-    (100% - (var(--timeline-cols) - 1) * var(--timeline-gap)) / var(--timeline-cols) -
+    min(
+        var(--step-w),
+        (100% - (var(--timeline-cols) - 1) * var(--timeline-gap)) / var(--timeline-cols)
+      ) -
       var(--marker-size) / 2
   );
   height: var(--lh-hairline);

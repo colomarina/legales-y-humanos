@@ -1,13 +1,12 @@
 import { hero } from '@/content/site'
 import { Button } from '@/components/ui/Button'
 import { Geometry } from '@/components/ui/Geometry'
-import { TextLink } from '@/components/ui/TextLink'
 import './Hero.css'
 
 export function Hero() {
   return (
     <section className="hero plane--deep" id="inicio">
-      <Geometry variant="hero" />
+      <Geometry />
 
       <div className="container hero__inner">
         <ul className="hero__eyebrow">
@@ -31,19 +30,32 @@ export function Hero() {
             <br />
             <em>{hero.leadLines[1]}</em>
           </p>
-          <p className="hero__description">{hero.description}</p>
+          <p className="hero__description hero__description--full">{hero.description}</p>
+          <p className="hero__description hero__description--short">{hero.descriptionShort}</p>
           <div className="hero__actions">
             <Button href={hero.primaryCta.href}>{hero.primaryCta.label}</Button>
-            <TextLink href={hero.secondaryCta.href}>{hero.secondaryCta.label}</TextLink>
+            <Button href={hero.secondaryCta.href} tone="outline">
+              {hero.secondaryCta.label}
+            </Button>
           </div>
         </div>
       </div>
 
-      <div className="container hero__footnotes">
-        <span>{hero.footnotes[0]}</span>
-        <span className="hero__rule" aria-hidden="true" />
-        <span>{hero.footnotes[1]}</span>
-      </div>
+      <figure className="hero__media">
+        <span className="hero__ring" aria-hidden="true" />
+        <span className="hero__frame">
+          <img
+            className="hero__photo"
+            src={hero.photo.src}
+            alt={hero.photo.alt}
+            width={hero.photo.width}
+            height={hero.photo.height}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </span>
+        <span className="hero__veil" aria-hidden="true" />
+      </figure>
     </section>
   )
 }

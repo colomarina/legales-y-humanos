@@ -100,25 +100,27 @@
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: var(--lh-space-xs);
+  gap: var(--lh-space-sm);
+  padding: 0.55rem 1rem 0.55rem 1.25rem;
+  border: var(--lh-hairline) solid currentColor;
+  border-radius: var(--lh-radius-pill);
   font-size: var(--lh-text-sm);
   font-weight: 600;
+  transition:
+    background-color var(--lh-dur) var(--lh-ease),
+    color var(--lh-dur) var(--lh-ease),
+    border-color var(--lh-dur) var(--lh-ease);
 }
 
 .header__contact-mark {
-  width: 36px;
-  height: 36px;
+  width: 20px;
+  height: 20px;
   display: grid;
   place-items: center;
-  border: var(--lh-hairline) solid currentColor;
-  border-radius: 50%;
-  transition:
-    background-color var(--lh-dur) var(--lh-ease),
-    color var(--lh-dur) var(--lh-ease);
 }
 
-.header__contact:focus-visible .header__contact-mark,
-.header__contact:hover .header__contact-mark {
+.header__contact:focus-visible,
+.header__contact:hover {
   background: var(--lh-warm);
   color: var(--lh-ink);
   border-color: var(--lh-warm);

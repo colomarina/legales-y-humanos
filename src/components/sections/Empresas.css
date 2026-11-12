@@ -1,84 +1,126 @@
-/* Filas separadas por hairlines: el patrón de lista de la dirección visual.
-   La línea va teñida de beige, no gris: así el color de la disciplina está
-   presente siempre, también para quien nunca va a pasar un mouse por encima. */
-.service-row {
-  position: relative;
-  isolation: isolate;
+.service-cards {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1fr) auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--lh-space-md);
-  align-items: baseline;
-  padding-block: var(--lh-space-md);
-  padding-inline: var(--lh-space-xs);
-  margin-inline: calc(var(--lh-space-xs) * -1);
-  border-top: var(--lh-hairline) solid var(--lh-line-warm);
 }
 
-/* Barrido beige desde la izquierda. Se anima `transform`, no `width`: es lo
-   que pide la guía de performance y además da dirección al gesto. */
-.service-row::before {
+.service-cards li {
+  display: flex;
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(var(--lh-space-md), 2.5vw, var(--lh-space-lg));
+  align-items: center;
+  padding: clamp(var(--lh-space-md), 3vw, var(--lh-space-lg));
+  border: var(--lh-hairline) solid var(--lh-line-warm);
+  border-radius: var(--lh-radius);
+  background: var(--lh-paper);
+  transition:
+    border-color var(--lh-dur) var(--lh-ease),
+    background-color var(--lh-dur) var(--lh-ease),
+    transform var(--lh-dur) var(--lh-ease);
+}
+
+.service-card--warm {
+  --tone: var(--lh-warm);
+  --tone-soft: var(--lh-warm-soft);
+  --tone-text: var(--lh-warm-text);
+}
+
+.service-card--blue {
+  --tone: var(--lh-blue);
+  --tone-soft: var(--lh-blue-soft);
+  --tone-text: var(--lh-blue-text);
+}
+
+.service-card::after {
   content: '';
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--lh-warm-soft);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--lh-dur) var(--lh-ease);
+  right: 0;
+  bottom: 0;
+  width: 38px;
+  height: 38px;
+  background: var(--tone);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
-.service-row:focus-visible::before {
-  transform: scaleX(1);
+.service-card__icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: var(--lh-radius-sm);
+  background: var(--tone-soft);
+  color: var(--lh-ink);
 }
 
-.service-list .service-row:last-child {
-  border-bottom: var(--lh-hairline) solid var(--lh-line-warm);
+.service-card__icon .icon {
+  width: 32px;
+  height: 32px;
 }
 
-.service-row__number {
+.service-card__body {
+  padding-left: clamp(var(--lh-space-md), 2.5vw, var(--lh-space-lg));
+  border-left: var(--lh-hairline) solid var(--lh-line-warm);
+}
+
+.service-card__title {
   font-family: var(--lh-serif);
-  font-style: italic;
-  font-size: var(--lh-text-lead);
-  color: var(--lh-warm-text);
-}
-
-.service-row__title {
-  font-family: var(--lh-serif);
-  font-size: var(--lh-display-xs);
+  font-size: var(--lh-display-card);
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
-.service-row__title span {
-  color: var(--lh-warm);
-}
-
-.service-row__copy {
+.service-card__copy {
+  margin-top: var(--lh-space-xs);
   color: var(--lh-muted);
   font-size: var(--lh-text-sm);
-  line-height: var(--lh-leading-text);
+  line-height: 1.6;
 }
 
-.service-row .arrow {
-  color: var(--lh-muted);
-  font-size: var(--lh-text-lead);
-  transition: color var(--lh-dur) var(--lh-ease);
+.service-card__arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: var(--lh-hairline) solid var(--lh-line-strong);
+  border-radius: 50%;
+  color: var(--lh-ink);
+  transition:
+    background-color var(--lh-dur) var(--lh-ease),
+    color var(--lh-dur) var(--lh-ease),
+    border-color var(--lh-dur) var(--lh-ease);
+}
+
+.service-card:focus-visible {
+  border-color: var(--tone);
+  background: var(--lh-neutral);
+}
+
+.service-card:focus-visible .service-card__arrow {
+  background: var(--lh-ink);
+  border-color: var(--lh-ink);
+  color: var(--lh-paper);
 }
 
 @media (hover: hover) {
-  .service-row:hover::before {
-    transform: scaleX(1);
+  .service-card:hover {
+    border-color: var(--tone);
+    background: var(--lh-neutral);
   }
 
-  .service-row:hover .arrow {
-    color: var(--lh-warm-text);
+  .service-card:hover .service-card__arrow {
+    background: var(--lh-ink);
+    border-color: var(--lh-ink);
+    color: var(--lh-paper);
   }
-}
-
-.service-row:focus-visible .arrow {
-  color: var(--lh-warm-text);
 }
 
 /* ---------- Llamado de cierre ---------- */
@@ -89,7 +131,8 @@
   align-items: center;
   margin-top: clamp(var(--lh-space-xl), 6vw, var(--lh-space-2xl));
   padding: clamp(var(--lh-space-lg), 4vw, var(--lh-space-xl));
-  background: var(--lh-warm);
+  border-radius: var(--lh-radius);
+  background: var(--lh-warm-light);
   color: var(--lh-ink);
 }
 
@@ -114,20 +157,48 @@
   font-size: var(--lh-text-sm);
 }
 
+@media (max-width: 1100px) {
+  .service-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 900px) {
-  .service-row {
-    grid-template-columns: 36px minmax(0, 1fr) auto;
-    row-gap: var(--lh-space-2xs);
-  }
-
-  /* La descripción pasa debajo del título en lugar de desaparecer. */
-  .service-row__copy {
-    grid-column: 2 / 4;
-  }
-
   .consulting-cta {
     grid-template-columns: 1fr;
     gap: var(--lh-space-lg);
     justify-items: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .service-card {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'icon arrow'
+      'body body';
+    align-items: start;
+  }
+
+  .service-card__icon {
+    grid-area: icon;
+    width: 60px;
+    height: 60px;
+  }
+
+  .service-card__icon .icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .service-card__arrow {
+    grid-area: arrow;
+    justify-self: end;
+  }
+
+  .service-card__body {
+    grid-area: body;
+    padding-left: 0;
+    border-left: 0;
   }
 }

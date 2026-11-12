@@ -6,6 +6,7 @@
   min-height: 56px;
   padding: var(--lh-space-sm) var(--lh-space-md);
   border: var(--lh-hairline) solid transparent;
+  border-radius: var(--lh-radius-xs);
   font-family: var(--lh-serif);
   font-size: var(--lh-display-xs);
   font-weight: 500;
@@ -66,5 +67,21 @@
     background: var(--lh-ink);
     color: var(--lh-paper);
     border-color: var(--lh-ink);
+  }
+}
+
+.button--outline {
+  background: transparent;
+  border-color: var(--lh-ink-invert);
+  color: var(--lh-ink-invert);
+  font-family: var(--lh-sans);
+  font-size: var(--lh-text-base);
+  font-weight: 500;
+}
+
+@media (hover: hover) {
+  .button--outline:hover {
+    background: var(--lh-paper);
+    color: var(--lh-ink);
   }
 }
