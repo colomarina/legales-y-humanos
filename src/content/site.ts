@@ -89,9 +89,9 @@ export const hero = {
      línea deliberado de la dirección visual. El acento va en la segunda. */
   leadLines: ['Dos profesiones.', 'Una mirada integral.'],
   description:
-    'Una consultora jurídica y de Recursos Humanos que combina conocimiento, experiencia y cercanía para acompañar a empresas y particulares.',
+    'Somos una consultora jurídica y de Recursos Humanos que combina conocimiento, experiencia y cercanía para acompañar a empresas y particulares.',
   descriptionShort:
-    'Una consultora jurídica y de Recursos Humanos que combina conocimiento, experiencia y cercanía.',
+    'Somos una consultora jurídica y de Recursos Humanos que combina conocimiento, experiencia y cercanía.',
   primaryCta: { label: 'Conocé nuestros servicios', href: '#empresas' },
   secondaryCta: { label: 'Contactanos', href: '#contacto' },
   photo: {

@@ -5,7 +5,7 @@ import { contactChannels } from '@/content/site'
 import './WhatsAppFab.css'
 
 export function WhatsAppFab() {
-  const { active, hasChosen, select } = useContactChannel()
+  const { select } = useContactChannel()
   const [open, setOpen] = useState(false)
   const dockRef = useRef<HTMLDivElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
@@ -42,20 +42,6 @@ export function WhatsAppFab() {
       </span>
     </>
   )
-
-  if (hasChosen) {
-    return (
-      <a
-        className="wa-fab"
-        href={active.whatsapp}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`Escribinos por WhatsApp — ${active.label}`}
-      >
-        {content}
-      </a>
-    )
-  }
 
   return (
     <div className="wa-dock" ref={dockRef}>
