@@ -6,6 +6,7 @@ import { Empresas } from '@/components/sections/Empresas'
 import { Hero } from '@/components/sections/Hero'
 import { Metodo } from '@/components/sections/Metodo'
 import { Nosotras } from '@/components/sections/Nosotras'
+import { OfficeTour } from '@/components/sections/OfficeTour'
 import { Particulares } from '@/components/sections/Particulares'
 import { ContactChannelProvider } from '@/context/ContactChannelContext'
 import { useReveal } from '@/hooks/useReveal'
@@ -31,6 +32,7 @@ export default function App() {
           <Empresas />
           <Particulares />
           <Metodo />
+          <OfficeTour />
           <Contacto />
         </main>
 

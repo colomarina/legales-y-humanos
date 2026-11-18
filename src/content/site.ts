@@ -283,6 +283,30 @@ export const contactChannels: ContactChannel[] = [
   },
 ]
 
+export const DIRECCION_ID = 'direccion'
+
+export const oficina = {
+  label: 'El estudio',
+  title: 'Te esperamos en el piso 4,',
+  titleAccent: 'oficinas B y C.',
+  text: 'Un espacio tranquilo para hablar de tu situación con tiempo. Si te queda más cómodo, también lo resolvemos por WhatsApp o videollamada.',
+  directionsLabel: 'Cómo llegar',
+  directionsHref: `#${DIRECCION_ID}`,
+  entrance: {
+    src: asset('fotos/oficina-entrada.webp'),
+    alt: 'Entrada del estudio: el cartel de Bogarsukoff & Baldaro en la pared, una mesa con dos sillas blancas y la puerta de la oficina',
+    width: 1000,
+    height: 1250,
+  } satisfies Photo,
+  tour: {
+    src: asset('fotos/oficina-recorrido.mp4'),
+    poster: asset('fotos/oficina-recorrido-poster.webp'),
+    label: 'Recorrido de 13 segundos por el estudio: la sala de reuniones, los escritorios y el cartel con el logo',
+    playLabel: 'Ver recorrido',
+    replayLabel: 'Volver a ver',
+  },
+} as const
+
 export const contacto = {
   number: '05 — Contacto',
   title: 'Hablemos de',

@@ -1,4 +1,4 @@
-import { contacto } from '@/content/site'
+import { DIRECCION_ID, contacto } from '@/content/site'
 import { Arrow } from '@/components/ui/Arrow'
 import { InstagramIcon } from '@/components/ui/InstagramIcon'
 import { Logo } from '@/components/ui/Logo'
@@ -34,7 +34,7 @@ export function Contacto() {
 
         <div className="contacto__grid">
           <div className="contacto__details" data-reveal>
-            <div className="contacto__detail">
+            <div className="contacto__detail" id={DIRECCION_ID}>
               <p className="kicker">{contacto.address.label}</p>
               <p className="contacto__address">
                 {contacto.address.lines.map((line, index) => (
