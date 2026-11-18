@@ -286,7 +286,7 @@ export const contactChannels: ContactChannel[] = [
 export const DIRECCION_ID = 'direccion'
 
 export const oficina = {
-  label: 'El estudio',
+  label: 'La consultora',
   title: 'Te esperamos en el piso 4,',
   titleAccent: 'oficinas B y C.',
   text: 'Un espacio tranquilo para hablar de tu situación con tiempo. Si te queda más cómodo, también lo resolvemos por WhatsApp o videollamada.',
@@ -320,16 +320,15 @@ export const contacto = {
     label: 'Dirección',
     lines: ['Calle 49 n° 876, piso 4, oficinas B y C', 'La Plata, Buenos Aires'],
     mapsLabel: 'Ver en Google Maps',
-    mapsHref: 'https://maps.app.goo.gl/jv9MrFxizEy6ukHZ7',
+    mapsHref: 'https://maps.app.goo.gl/DiwHJk4yerCjXsSj6',
     map: {
       title: 'Ubicación del estudio en Google Maps',
       loadLabel: 'Ver mapa',
       loadHint: 'Se carga desde Google Maps',
       previewSrc: asset('fotos/mapa-estudio.webp'),
       previewCredit: '© OpenStreetMap',
-      embedSrc: `https://www.google.com/maps?q=${encodeURIComponent(
-        'Bogarsukoff & Baldaro Asoc., Calle 49 876, La Plata, Buenos Aires',
-      )}&z=17&output=embed`,
+      embedSrc:
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.482454305515!2d-57.958503823497274!3d-34.91943537424208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e7eafab050b1%3A0xb051af663a504100!2sBogarsukoff%20%26%20Baldaro%20Asoc.%20Consultoria%20Juridica%20y%20de%20Recursos%20Humanos!5e0!3m2!1ses!2sar!4v1795015259028!5m2!1ses!2sar',
     },
   },
   modality: {
