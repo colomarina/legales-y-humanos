@@ -78,6 +78,16 @@ const headUrls = [...head.matchAll(/https:\/\/(?:colomarina|legalesyhumanos)[^"]
 const foreignHeadUrls = headUrls.filter((url) => !url.startsWith(SITE_URL))
 check('URLs propias del head salen de SITE_URL', foreignHeadUrls.length === 0, foreignHeadUrls.join(', '))
 
+const decode = (text = '') => text.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+const title = decode(titles[0])
+const description = decode(meta('name', 'description'))
+check('Título de 30 a 65 caracteres', title.length >= 30 && title.length <= 65, `${title.length}: ${title}`)
+check('Título nombra La Plata', title.includes('La Plata'), title)
+check('Descripción de 120 a 160 caracteres', description.length >= 120 && description.length <= 160, `${description.length}: ${description}`)
+check('Descripción nombra La Plata', description.includes('La Plata'), description)
+check('og:title igual al título', decode(meta('property', 'og:title')) === title)
+check('og:description igual a la descripción', decode(meta('property', 'og:description')) === description)
+
 const failed = results.filter((r) => !r.ok)
 for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.name}${r.ok || !r.detail ? '' : `  → ${r.detail}`}`)
 console.log(`\n${results.length - failed.length}/${results.length} PASS`)
