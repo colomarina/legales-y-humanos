@@ -116,9 +116,14 @@
   transition: color var(--lh-dur-fast) var(--lh-ease);
 }
 
-.preguntas__question:hover,
 .preguntas__item.is-open .preguntas__question {
   color: var(--group-text);
+}
+
+@media (hover: hover) {
+  .preguntas__question:hover {
+    color: var(--group-text);
+  }
 }
 
 .preguntas__toggle {
