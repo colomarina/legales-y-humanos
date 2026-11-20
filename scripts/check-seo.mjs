@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
@@ -12,15 +12,25 @@ const BASE_PATH = new URL(SITE_URL).pathname
 const readDist = (file) => (existsSync(`dist/${file}`) ? readFileSync(`dist/${file}`, 'utf8') : '')
 const html = readFileSync('dist/index.html', 'utf8')
 
+const appRoot = html.slice(html.indexOf('<div id="root">'))
+
 for (const text of ['Las profesionales detrás de', 'Gestión de Recursos Humanos', 'Derecho Sucesorio']) {
-  check(`HTML prerenderizado contiene «${text}»`, html.includes(text))
+  check(`HTML prerenderizado contiene «${text}»`, appRoot.includes(text))
 }
 
-const localSources = [...html.matchAll(/\ssrc="([^"]+)"/g)]
-  .map(([, src]) => src)
-  .filter((src) => !src.startsWith('data:') && !src.startsWith('https:'))
-const outsideBase = localSources.filter((src) => !src.startsWith(BASE_PATH))
-check('Todo src local lleva el base', outsideBase.length === 0, outsideBase.join(', '))
+const isLocalPath = (url) => url.startsWith('/') && !url.startsWith('//')
+const htmlPaths = [...html.matchAll(/\s(?:src|href|poster)="([^"]+)"/gi)].map(([, url]) => url)
+const srcsetPaths = [...html.matchAll(/\ssrcset="([^"]+)"/gi)].flatMap(([, set]) =>
+  set.split(',').map((candidate) => candidate.trim().split(/\s+/)[0]),
+)
+const cssPaths = readdirSync('dist/assets')
+  .filter((file) => file.endsWith('.css'))
+  .flatMap((file) => [...readFileSync(`dist/assets/${file}`, 'utf8').matchAll(/url\(\s*['"]?([^'")]+)/g)])
+  .map(([, url]) => url)
+const outsideBase = [...htmlPaths, ...srcsetPaths, ...cssPaths]
+  .filter(isLocalPath)
+  .filter((url) => !url.startsWith(BASE_PATH))
+check('Toda ruta local (src, href, srcset, poster, url()) lleva el base', outsideBase.length === 0, outsideBase.join(', '))
 
 const robots = readDist('robots.txt')
 check('robots.txt permite todo', robots.includes('User-agent: *') && robots.includes('Allow: /'), robots)
