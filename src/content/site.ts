@@ -263,12 +263,6 @@ export const preguntas = {
   title: 'Lo que más',
   titleAccent: 'nos preguntan.',
   switchLabel: 'Ver las preguntas de',
-  cta: {
-    text: '¿Te quedó otra duda?',
-    label: 'Hacé tu consulta',
-    href: '#contacto',
-    whatsappLabel: 'Escribinos por WhatsApp',
-  },
   groups: [
     {
       id: 'empresas',

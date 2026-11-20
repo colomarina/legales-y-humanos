@@ -1,11 +1,17 @@
 import { useRef, useState, type FormEvent } from 'react'
 import { flushSync } from 'react-dom'
-import { contacto, type ContactChannel } from '@/content/site'
+import { contacto, type ContactChannel, type Discipline } from '@/content/site'
 import { Arrow } from '@/components/ui/Arrow'
-import { buttonClassName, TONE_BY_DISCIPLINE } from '@/components/ui/Button'
+import { buttonClassName, type ButtonTone } from '@/components/ui/Button'
 import './ContactForm.css'
 
 const { form } = contacto
+
+/** El formulario se viste del color de la disciplina del recorrido elegido. */
+const TONE_BY_DISCIPLINE: Record<Discipline, ButtonTone> = {
+  rrhh: 'warm',
+  juridico: 'blue',
+}
 
 type FieldName = 'name' | 'email' | 'message' | 'consent'
 type Errors = Partial<Record<FieldName, string>>

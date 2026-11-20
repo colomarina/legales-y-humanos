@@ -51,8 +51,6 @@
   --group-accent: var(--lh-warm);
   --group-text: var(--lh-warm-text);
 
-  display: flex;
-  flex-direction: column;
   min-width: 0;
 }
 
@@ -197,45 +195,6 @@
   transform: none;
 }
 
-.preguntas__cta {
-  display: grid;
-  gap: var(--lh-space-sm);
-  margin-top: auto;
-  padding-top: var(--lh-space-lg);
-}
-
-.preguntas__cta-text {
-  margin: 0;
-  font-family: var(--lh-serif);
-  font-size: var(--lh-display-xs);
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-.preguntas__cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--lh-space-sm) var(--lh-space-lg);
-}
-
-.preguntas__cta-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--group-text);
-  font-size: var(--lh-text-sm);
-  font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
-}
-
-@media (hover: hover) {
-  .preguntas__cta-whatsapp:hover {
-    text-decoration-thickness: 2px;
-  }
-}
-
 @keyframes preguntas-swap {
   from {
     opacity: 0;
@@ -263,12 +222,6 @@
   }
 }
 
-@media (max-width: 650px) {
-  .preguntas__cta .button {
-    width: 100%;
-  }
-}
-
 @media (min-width: 1024px) {
   .preguntas__switch {
     display: none;
@@ -277,7 +230,7 @@
   .preguntas__groups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--lh-space-2xl);
-    align-items: stretch;
+    align-items: start;
     margin-top: var(--lh-space-xl);
   }
 }

@@ -1,14 +1,8 @@
 import type { ReactNode } from 'react'
-import type { Discipline } from '@/content/site'
 import { Arrow } from './Arrow'
 import './Button.css'
 
 export type ButtonTone = 'warm' | 'blue' | 'paper' | 'outline'
-
-export const TONE_BY_DISCIPLINE: Record<Discipline, ButtonTone> = {
-  rrhh: 'warm',
-  juridico: 'blue',
-}
 
 /** Clases del botón, para los casos en que hace falta un `<button>` nativo. */
 export function buttonClassName(tone: ButtonTone = 'warm'): string {
