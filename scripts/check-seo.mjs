@@ -45,6 +45,10 @@ try {
   check('El JSON-LD se puede leer', false, error.message)
 }
 
+const hostileScript = typeof server.jsonLdScript === 'function' ? server.jsonLdScript({ texto: '</script><b>x</b>' }) : ''
+const closingTags = hostileScript.match(/<\/script>/g) ?? []
+check('JSON-LD no se puede cerrar desde el contenido', closingTags.length === 1 && hostileScript.endsWith('</script>'), hostileScript)
+
 const types = (node) => [node['@type']].flat()
 const estudio = graph.find((node) => types(node).includes('LegalService')) ?? {}
 check('Estudio con nombre legal exacto', estudio.legalName === 'Bogarsukoff & Baldaro Asoc.', estudio.legalName)

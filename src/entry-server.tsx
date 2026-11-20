@@ -4,6 +4,7 @@ import App from './App'
 import { buildStructuredData, jsonLdScript } from './seo/structuredData'
 
 export { renderHead } from './seo/head'
+export { jsonLdScript } from './seo/structuredData'
 export { SITE_URL } from './content/siteUrl'
 
 export function render(): string {
