@@ -88,6 +88,17 @@ check('Descripción nombra La Plata', description.includes('La Plata'), descript
 check('og:title igual al título', decode(meta('property', 'og:title')) === title)
 check('og:description igual a la descripción', decode(meta('property', 'og:description')) === description)
 
+const faqPage = graph.find((node) => types(node).includes('FAQPage'))
+const faqEntries = faqPage?.mainEntity ?? []
+check('FAQPage con 12 preguntas', faqEntries.length === 12, String(faqEntries.length))
+check('FAQPage incluye una pregunta textual de Anto', faqEntries.some((q) => q.name === '¿Pueden trabajar como departamento externo de Recursos Humanos?'))
+
+const body = decode(html.slice(html.indexOf('<body')).replace(/&#x27;/g, "'"))
+const missingFaqTexts = faqEntries
+  .flatMap((q) => [q.name, q.acceptedAnswer?.text])
+  .filter((text) => !text || !body.includes(text))
+check('Las 12 preguntas y respuestas están en el HTML', faqEntries.length > 0 && missingFaqTexts.length === 0, missingFaqTexts.slice(0, 2).join(' | '))
+
 const failed = results.filter((r) => !r.ok)
 for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.name}${r.ok || !r.detail ? '' : `  → ${r.detail}`}`)
 console.log(`\n${results.length - failed.length}/${results.length} PASS`)

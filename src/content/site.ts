@@ -47,6 +47,18 @@ export interface ProcessStep {
   text: string
 }
 
+export interface FaqItem {
+  question: string
+  answer: string
+}
+
+export interface FaqGroup {
+  id: 'empresas' | 'particulares'
+  tone: Discipline
+  label: string
+  items: FaqItem[]
+}
+
 export interface ContactChannel {
   id: 'empresas' | 'particulares'
   index: string
@@ -82,6 +94,7 @@ export const mobileNavLinks: NavLink[] = [
   { label: 'Servicios para empresas', href: '#empresas' },
   { label: 'Servicios para particulares', href: '#particulares' },
   { label: 'Cómo trabajamos', href: '#metodo' },
+  { label: 'Preguntas frecuentes', href: '#preguntas' },
   { label: 'Contacto', href: '#contacto' },
 ]
 
@@ -244,6 +257,89 @@ export const metodo = {
   ] satisfies ProcessStep[],
 } as const
 
+export const preguntas = {
+  number: '05 — Preguntas frecuentes',
+  title: 'Lo que más',
+  titleAccent: 'nos preguntan.',
+  switchLabel: 'Ver las preguntas de',
+  groups: [
+    {
+      id: 'empresas',
+      tone: 'rrhh',
+      label: 'Empresas',
+      items: [
+        {
+          question: '¿Qué servicios ofrecen a las empresas?',
+          answer:
+            'Brindamos asesoramiento integral en Recursos Humanos y Derecho Laboral, incluyendo selección de personal, organización interna, gestión de personas y acompañamiento en relaciones laborales.',
+        },
+        {
+          question: '¿Trabajan con pequeñas y medianas empresas?',
+          answer:
+            'Sí. Acompañamos a PyMEs y empresas de distintos tamaños, adaptando nuestros servicios a sus necesidades y estructura.',
+        },
+        {
+          question: '¿Pueden trabajar como departamento externo de Recursos Humanos?',
+          answer:
+            'Sí. Ofrecemos acompañamiento externo para empresas que no cuentan con un área propia de RRHH o que necesitan complementar y fortalecer su gestión interna.',
+        },
+        {
+          question: '¿Cómo es el proceso de selección de personal?',
+          answer:
+            'Comenzamos identificando la necesidad de incorporación y el perfil del puesto. Luego desarrollamos la búsqueda, selección y evaluación de candidatos, de acuerdo con las características de cada empresa.',
+        },
+        {
+          question: '¿Pueden ayudarnos a organizar los puestos y las funciones del personal?',
+          answer:
+            'Sí. Trabajamos en la definición de roles, responsabilidades, funciones y procesos internos para favorecer una organización más clara y eficiente.',
+        },
+        {
+          question: '¿Brindan asesoramiento ante situaciones o conflictos laborales?',
+          answer:
+            'Sí. Asesoramos a las empresas en la gestión de sus relaciones laborales, analizando cada situación desde una perspectiva de Recursos Humanos y Derecho Laboral.',
+        },
+        {
+          question: '¿Cómo podemos contratar sus servicios?',
+          answer:
+            'El primer paso es coordinar una reunión para conocer la empresa, sus necesidades y los objetivos que busca alcanzar. A partir de ese diagnóstico, proponemos una modalidad de trabajo adecuada.',
+        },
+      ],
+    },
+    {
+      id: 'particulares',
+      tone: 'juridico',
+      label: 'Particulares',
+      items: [
+        {
+          question: '¿Qué áreas del Derecho atienden?',
+          answer:
+            'Brindamos asesoramiento jurídico en distintas áreas, incluyendo Derecho Laboral, Derecho Previsional y Derecho Sucesorio, entre otras.',
+        },
+        {
+          question: '¿Puedo realizar una consulta antes de iniciar una acción o trámite legal?',
+          answer:
+            'Sí. Podés realizar una consulta para analizar tu situación, conocer las alternativas disponibles y recibir orientación sobre los pasos a seguir.',
+        },
+        {
+          question: '¿Cómo sé qué tipo de asesoramiento necesito?',
+          answer:
+            'En una primera instancia evaluamos tu consulta para identificar el área del Derecho involucrada y determinar cómo podemos ayudarte.',
+        },
+        {
+          question: '¿Atienden consultas de manera presencial y virtual?',
+          answer:
+            'Sí. Ofrecemos atención presencial en La Plata y consultas virtuales, según las características de cada caso.',
+        },
+        {
+          question: '¿Cómo puedo solicitar una consulta?',
+          answer:
+            'Podés comunicarte con nosotros a través de los medios de contacto disponibles en nuestra página para coordinar una entrevista.',
+        },
+      ],
+    },
+  ] satisfies FaqGroup[],
+} as const
+
 const EMAIL_EMPRESAS = 'Bogarsukoffbaldaroasoc@gmail.com'
 const EMAIL_PARTICULARES = 'consultas.estudiobb@gmail.com'
 
@@ -310,7 +406,7 @@ export const oficina = {
 } as const
 
 export const contacto = {
-  number: '05 — Contacto',
+  number: '06 — Contacto',
   title: 'Hablemos de',
   titleAccent: 'tu consulta.',
   text: 'Estamos para escuchar tu situación y ayudarte a encontrar un camino claro.',

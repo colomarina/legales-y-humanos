@@ -8,6 +8,7 @@ import {
   hero,
   nosotras,
   particulares,
+  preguntas,
   type Discipline,
   type Profile,
 } from '@/content/site'
@@ -98,7 +99,19 @@ export function buildStructuredData(): object {
     publisher: { '@id': ESTUDIO_ID },
   }
 
-  return { '@context': 'https://schema.org', '@graph': [estudioNode, webSite] }
+  const faqPage = {
+    '@type': 'FAQPage',
+    inLanguage: 'es-AR',
+    mainEntity: preguntas.groups.flatMap((group) =>
+      group.items.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    ),
+  }
+
+  return { '@context': 'https://schema.org', '@graph': [estudioNode, webSite, faqPage] }
 }
 
 export function jsonLdScript(data: object): string {
