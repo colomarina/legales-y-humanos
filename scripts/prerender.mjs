@@ -4,17 +4,24 @@ import { resolve } from 'node:path'
 
 const INDEX = 'dist/index.html'
 const EMPTY_ROOT = '<div id="root"></div>'
+const HEAD_END = '</head>'
+const TITLE = /<title>[^<]*<\/title>/
 
 const server = await import(pathToFileURL(resolve('dist-server/entry-server.js')).href)
 const template = readFileSync(INDEX, 'utf8')
-if (!template.includes(EMPTY_ROOT)) throw new Error(`${INDEX} no tiene ${EMPTY_ROOT}`)
 
-if (!template.includes('</head>')) throw new Error(`${INDEX} no tiene </head>`)
+for (const [label, found] of [
+  [EMPTY_ROOT, template.includes(EMPTY_ROOT)],
+  [HEAD_END, template.includes(HEAD_END)],
+  ['<title>', TITLE.test(template)],
+]) {
+  if (!found) throw new Error(`${INDEX} no tiene ${label}`)
+}
 
 const page = template
-  .replace('</head>', `${server.structuredDataScript()}
-  </head>`)
-  .replace(EMPTY_ROOT, `<div id="root">${server.render()}</div>`)
+  .replace(TITLE, () => server.renderHead())
+  .replace(HEAD_END, () => `  ${server.structuredDataScript()}\n  ${HEAD_END}`)
+  .replace(EMPTY_ROOT, () => `<div id="root">${server.render()}</div>`)
 writeFileSync(INDEX, page)
 
 const robots = ['User-agent: *', 'Allow: /', '', `Sitemap: ${server.SITE_URL}sitemap.xml`, ''].join('\n')

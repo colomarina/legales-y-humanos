@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server'
 import App from './App'
 import { buildStructuredData, jsonLdScript } from './seo/structuredData'
 
+export { renderHead } from './seo/head'
 export { SITE_URL } from './content/siteUrl'
 
 export function render(): string {

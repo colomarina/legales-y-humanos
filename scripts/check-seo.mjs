@@ -59,6 +59,25 @@ const ownUrls = [...JSON.stringify(graph).matchAll(/https:\/\/(?:colomarina|lega
 const foreignOwnUrls = ownUrls.filter((url) => !url.startsWith(SITE_URL))
 check('URLs propias del JSON-LD salen de SITE_URL', foreignOwnUrls.length === 0, foreignOwnUrls.join(', '))
 
+const ogImagePath = 'dist/og-imagen.jpg'
+const ogImageBytes = existsSync(ogImagePath) ? readFileSync(ogImagePath) : Buffer.alloc(0)
+check('og-imagen.jpg es un JPEG', ogImageBytes[0] === 0xff && ogImageBytes[1] === 0xd8)
+
+const meta = (attr, key) => head.match(new RegExp(`<meta ${attr}="${key.replace(/[.+]/g, '\\$&')}" content="([^"]*)"`))?.[1]
+const titles = [...head.matchAll(/<title>([^<]*)<\/title>/g)].map(([, t]) => t)
+check('Un solo <title>', titles.length === 1, titles.join(' | '))
+check('og:image apunta a la foto del estudio', meta('property', 'og:image') === `${SITE_URL}og-imagen.jpg`, meta('property', 'og:image'))
+check('og:image declara 1200×630', meta('property', 'og:image:width') === '1200' && meta('property', 'og:image:height') === '630')
+check('twitter:card con imagen grande', meta('name', 'twitter:card') === 'summary_large_image', meta('name', 'twitter:card'))
+const canonical = head.match(/<link rel="canonical" href="([^"]*)"/)?.[1]
+check('canonical es SITE_URL', canonical === SITE_URL, canonical)
+check('og:url es SITE_URL', meta('property', 'og:url') === SITE_URL, meta('property', 'og:url'))
+check('Ya no se comparte el ícono', !/og:image[^>]*icono-512/.test(head))
+
+const headUrls = [...head.matchAll(/https:\/\/(?:colomarina|legalesyhumanos)[^"]*/g)].map(([url]) => url)
+const foreignHeadUrls = headUrls.filter((url) => !url.startsWith(SITE_URL))
+check('URLs propias del head salen de SITE_URL', foreignHeadUrls.length === 0, foreignHeadUrls.join(', '))
+
 const failed = results.filter((r) => !r.ok)
 for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.name}${r.ok || !r.detail ? '' : `  → ${r.detail}`}`)
 console.log(`\n${results.length - failed.length}/${results.length} PASS`)

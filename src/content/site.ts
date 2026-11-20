@@ -357,6 +357,18 @@ export const contacto = {
   },
 } as const
 
+export const seo = {
+  title: 'Legales y Humanos — Consultora Jurídica y de Recursos Humanos',
+  description:
+    'Consultora jurídica y de Recursos Humanos en La Plata. Asesoramiento para empresas y particulares. Bogarsukoff & Baldaro Asoc.',
+  image: {
+    path: 'og-imagen.jpg',
+    width: 1200,
+    height: 630,
+    alt: 'Sala de reuniones del estudio, con el logo de Bogarsukoff & Baldaro en la pared',
+  },
+} as const
+
 export const estudio = {
   foundingYear: '2024',
   openingHours: {
