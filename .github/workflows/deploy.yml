@@ -32,8 +32,9 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      # Incluye typecheck: tsc --noEmit && vite build
       - run: pnpm build
+
+      - run: pnpm check:seo
 
       - uses: actions/configure-pages@v5
 

@@ -1,12 +1,10 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { SITE_URL } from './src/content/siteUrl'
 
-// https://vite.dev/config/
-// El sitio se publica en GitHub Pages bajo /legales-y-humanos/.
-// Con dominio propio, cambiar a '/'.
 export default defineConfig({
-  base: '/legales-y-humanos/',
+  base: new URL(SITE_URL).pathname,
   plugins: [react()],
   resolve: {
     alias: {
