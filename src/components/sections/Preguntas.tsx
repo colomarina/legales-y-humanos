@@ -1,15 +1,23 @@
 import { useState } from 'react'
-import { preguntas, type FaqGroup } from '@/content/site'
+import { contactChannels, preguntas, type FaqGroup } from '@/content/site'
 import { SectionIntro } from '@/components/layout/SectionIntro'
+import { Button, TONE_BY_DISCIPLINE } from '@/components/ui/Button'
+import { useContactChannel } from '@/context/ContactChannelContext'
 import './Preguntas.css'
 
 type GroupId = FaqGroup['id']
 
 const questionId = (groupId: GroupId, index: number) => `pregunta-${groupId}-${index + 1}`
 
+const FIRST_QUESTIONS = preguntas.groups.map((group) => questionId(group.id, 0))
+
+const whatsappFor = (groupId: GroupId) =>
+  contactChannels.find((channel) => channel.id === groupId)?.whatsapp ?? contactChannels[0].whatsapp
+
 export function Preguntas() {
   const [activeGroup, setActiveGroup] = useState<GroupId>(preguntas.groups[0].id)
-  const [openQuestions, setOpenQuestions] = useState<ReadonlySet<string>>(new Set())
+  const [openQuestions, setOpenQuestions] = useState<ReadonlySet<string>>(() => new Set(FIRST_QUESTIONS))
+  const { select } = useContactChannel()
 
   const toggle = (id: string) =>
     setOpenQuestions((current) => {
@@ -89,6 +97,26 @@ export function Preguntas() {
                     )
                   })}
                 </ul>
+                <div className="preguntas__cta">
+                  <p className="preguntas__cta-text">{preguntas.cta.text}</p>
+                  <div className="preguntas__cta-actions">
+                    <Button
+                      href={preguntas.cta.href}
+                      tone={TONE_BY_DISCIPLINE[group.tone]}
+                      onClick={() => select(group.id)}
+                    >
+                      {preguntas.cta.label}
+                    </Button>
+                    <a
+                      className="preguntas__cta-whatsapp"
+                      href={whatsappFor(group.id)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {preguntas.cta.whatsappLabel}
+                    </a>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

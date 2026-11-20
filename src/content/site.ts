@@ -86,6 +86,7 @@ export const navLinks: NavLink[] = [
   { label: 'Empresas', href: '#empresas' },
   { label: 'Particulares', href: '#particulares' },
   { label: 'Cómo trabajamos', href: '#metodo' },
+  { label: 'Preguntas', href: '#preguntas' },
 ]
 
 /** Navegación móvil: lista completa y numerada. */
@@ -262,6 +263,12 @@ export const preguntas = {
   title: 'Lo que más',
   titleAccent: 'nos preguntan.',
   switchLabel: 'Ver las preguntas de',
+  cta: {
+    text: '¿Te quedó otra duda?',
+    label: 'Hacé tu consulta',
+    href: '#contacto',
+    whatsappLabel: 'Escribinos por WhatsApp',
+  },
   groups: [
     {
       id: 'empresas',
