@@ -55,10 +55,10 @@ export function OfficeTour() {
         <div className="office-tour__media">
           <figure className="office-tour__frame">
             <img
-              src={oficina.entrance.src}
-              alt={oficina.entrance.alt}
-              width={oficina.entrance.width}
-              height={oficina.entrance.height}
+              src={oficina.meetingRoom.src}
+              alt={oficina.meetingRoom.alt}
+              width={oficina.meetingRoom.width}
+              height={oficina.meetingRoom.height}
               loading="lazy"
               decoding="async"
             />

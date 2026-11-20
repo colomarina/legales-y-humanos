@@ -391,9 +391,9 @@ export const oficina = {
   text: 'Un espacio tranquilo para hablar de tu situación con tiempo. Si te queda más cómodo, también lo resolvemos por WhatsApp o videollamada.',
   directionsLabel: 'Cómo llegar',
   directionsHref: `#${DIRECCION_ID}`,
-  entrance: {
-    src: asset('fotos/oficina-entrada.webp'),
-    alt: 'Entrada del estudio: el cartel de Bogarsukoff & Baldaro en la pared, una mesa con dos sillas blancas y la puerta de la oficina',
+  meetingRoom: {
+    src: asset('fotos/oficina-sala.webp'),
+    alt: 'Sala de reuniones del estudio: una mesa clara con sillas blancas, el logo de Bogarsukoff & Baldaro en la pared y una ventana con árboles',
     width: 1000,
     height: 1250,
   } satisfies Photo,
