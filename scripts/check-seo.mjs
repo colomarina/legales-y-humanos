@@ -32,6 +32,33 @@ check('sitemap.xml tiene solo la home', locs.length === 1 && locs[0] === SITE_UR
 const today = new Date().toISOString().slice(0, 10)
 check('sitemap.xml lleva la fecha del build', sitemap.includes(`<lastmod>${today}</lastmod>`), sitemap)
 
+const head = html.slice(0, html.indexOf('</head>'))
+const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(([, json]) => json)
+const jsonLdInHead = [...head.matchAll(/<script type="application\/ld\+json">/g)].length
+check('Un solo bloque JSON-LD, en el head', jsonLdBlocks.length === 1 && jsonLdInHead === 1, `${jsonLdBlocks.length} en total, ${jsonLdInHead} en el head`)
+
+let graph = []
+try {
+  graph = JSON.parse(jsonLdBlocks[0] ?? 'null')?.['@graph'] ?? []
+  check('El JSON-LD se puede leer', graph.length > 0)
+} catch (error) {
+  check('El JSON-LD se puede leer', false, error.message)
+}
+
+const types = (node) => [node['@type']].flat()
+const estudio = graph.find((node) => types(node).includes('LegalService')) ?? {}
+check('Estudio con nombre legal exacto', estudio.legalName === 'Bogarsukoff & Baldaro Asoc.', estudio.legalName)
+check('Estudio fundado en 2024', estudio.foundingDate === '2024', estudio.foundingDate)
+check('Estudio abre a las 08:30', estudio.openingHoursSpecification?.[0]?.opens === '08:30', JSON.stringify(estudio.openingHoursSpecification))
+check('Estudio en La Plata', estudio.address?.addressLocality === 'La Plata', JSON.stringify(estudio.address))
+
+const people = [...graph, ...(estudio.employee ?? [])].filter((node) => types(node).includes('Person'))
+check('Brenda con su matrícula', people.some((p) => p.hasCredential?.name === 'T° 63 F° 186 CALP'), people.map((p) => p.name).join(', '))
+
+const ownUrls = [...JSON.stringify(graph).matchAll(/https:\/\/(?:colomarina|legalesyhumanos)[^"]*/g)].map(([url]) => url)
+const foreignOwnUrls = ownUrls.filter((url) => !url.startsWith(SITE_URL))
+check('URLs propias del JSON-LD salen de SITE_URL', foreignOwnUrls.length === 0, foreignOwnUrls.join(', '))
+
 const failed = results.filter((r) => !r.ok)
 for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.name}${r.ok || !r.detail ? '' : `  → ${r.detail}`}`)
 console.log(`\n${results.length - failed.length}/${results.length} PASS`)

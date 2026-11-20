@@ -31,6 +31,7 @@ export interface Profile {
   tone: Discipline
   role: string
   bio: string
+  credential?: string
   photo: Photo
 }
 
@@ -128,6 +129,7 @@ export const nosotras = {
       discipline: 'Asesoramiento jurídico',
       tone: 'juridico',
       role: 'Abogada. Cofundadora y titular.',
+      credential: 'T° 63 F° 186 CALP',
       bio: 'Brinda asesoramiento jurídico a empresas y particulares, con especial atención a las relaciones laborales y la prevención de conflictos.',
       photo: {
         src: asset('fotos/brenda.webp'),
@@ -353,6 +355,23 @@ export const contacto = {
       'Se abrió tu programa de correo con la consulta completa. Revisala y tocá enviar para que nos llegue.',
     resetLabel: 'Enviar otra consulta',
   },
+} as const
+
+export const estudio = {
+  foundingYear: '2024',
+  openingHours: {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:30',
+    closes: '16:00',
+  },
+  geo: { latitude: -34.9194354, longitude: -57.9585038 },
+  address: {
+    street: 'Calle 49 n° 876, piso 4, oficinas B y C',
+    locality: 'La Plata',
+    region: 'Buenos Aires',
+    country: 'AR',
+  },
+  bar: 'Colegio de Abogados de La Plata',
 } as const
 
 export const footer = {

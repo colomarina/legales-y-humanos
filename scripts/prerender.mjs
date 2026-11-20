@@ -9,7 +9,13 @@ const server = await import(pathToFileURL(resolve('dist-server/entry-server.js')
 const template = readFileSync(INDEX, 'utf8')
 if (!template.includes(EMPTY_ROOT)) throw new Error(`${INDEX} no tiene ${EMPTY_ROOT}`)
 
-writeFileSync(INDEX, template.replace(EMPTY_ROOT, `<div id="root">${server.render()}</div>`))
+if (!template.includes('</head>')) throw new Error(`${INDEX} no tiene </head>`)
+
+const page = template
+  .replace('</head>', `${server.structuredDataScript()}
+  </head>`)
+  .replace(EMPTY_ROOT, `<div id="root">${server.render()}</div>`)
+writeFileSync(INDEX, page)
 
 const robots = ['User-agent: *', 'Allow: /', '', `Sitemap: ${server.SITE_URL}sitemap.xml`, ''].join('\n')
 writeFileSync('dist/robots.txt', robots)
