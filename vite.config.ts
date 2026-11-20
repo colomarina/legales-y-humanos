@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { SITE_URL } from './src/content/siteUrl'
+import { SITE_URL } from './src/content/siteUrl.ts'
 
 export default defineConfig({
   base: new URL(SITE_URL).pathname,
