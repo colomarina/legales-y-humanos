@@ -5,6 +5,9 @@ import { SITE_URL } from './src/content/siteUrl'
 
 export default defineConfig({
   base: new URL(SITE_URL).pathname,
+  define: {
+    __BUILD_YEAR__: JSON.stringify(new Date().getFullYear()),
+  },
   plugins: [react()],
   resolve: {
     alias: {

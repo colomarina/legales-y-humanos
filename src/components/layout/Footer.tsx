@@ -27,7 +27,7 @@ export function Footer() {
       </div>
       <div className="container footer__bottom">
         <span>
-          © {new Date().getFullYear()} {brand.name}
+          © {__BUILD_YEAR__} {brand.name}
         </span>
         {footer.meta.map((item) => (
           <span key={item}>{item}</span>
