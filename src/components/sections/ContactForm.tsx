@@ -2,6 +2,7 @@ import { useRef, useState, type FormEvent } from 'react'
 import { flushSync } from 'react-dom'
 import { contacto, type ContactChannel, type Discipline } from '@/content/site'
 import { Arrow } from '@/components/ui/Arrow'
+import { trackEvent } from '@/analytics'
 import { buttonClassName, type ButtonTone } from '@/components/ui/Button'
 import './ContactForm.css'
 
@@ -94,6 +95,7 @@ export function ContactForm({ channel }: ContactFormProps) {
       return
     }
 
+    trackEvent({ name: 'generate_lead', params: { area: channel.id, medio: 'formulario' } })
     window.location.href = buildMailto(data, channel)
     setSent(true)
   }

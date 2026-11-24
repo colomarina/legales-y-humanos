@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
 import { contactChannels, type ContactChannel } from '@/content/site'
+import { trackEvent } from '@/analytics'
 
 interface ContactChannelValue {
   active: ContactChannel
@@ -25,6 +26,7 @@ export function ContactChannelProvider({ children }: { children: ReactNode }) {
   const select = useCallback((id: ContactChannel['id']) => {
     setActiveId(id)
     setHasChosen(true)
+    trackEvent({ name: 'select_area', params: { area: id } })
   }, [])
 
   const value = useMemo<ContactChannelValue>(

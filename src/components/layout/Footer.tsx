@@ -1,5 +1,6 @@
 import { brand, footer } from '@/content/site'
 import { Logo } from '@/components/ui/Logo'
+import { analyticsEnabled } from '@/analytics'
 import './Footer.css'
 
 export function Footer() {
@@ -33,6 +34,7 @@ export function Footer() {
           <span key={item}>{item}</span>
         ))}
       </div>
+      {analyticsEnabled && <p className="container footer__privacy">{footer.privacy}</p>}
     </footer>
   )
 }

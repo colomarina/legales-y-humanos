@@ -487,4 +487,6 @@ export const footer = {
   taglineLines: ['Dos profesiones.', 'Una mirada integral.'],
   backToTop: 'Volver arriba',
   meta: ['Consultora Jurídica y de Recursos Humanos', 'La Plata · Argentina'],
+  privacy:
+    'Usamos Google Analytics para saber, de forma anónima, cómo se usa este sitio. Lo que nos escribas por el formulario, WhatsApp o mail lo usamos solo para responder tu consulta.',
 } as const
