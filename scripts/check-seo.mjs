@@ -42,6 +42,13 @@ check('sitemap.xml tiene solo la home', locs.length === 1 && locs[0] === SITE_UR
 const today = new Date().toISOString().slice(0, 10)
 check('sitemap.xml lleva la fecha del build', sitemap.includes(`<lastmod>${today}</lastmod>`), sitemap)
 
+const llms = existsSync('dist/llms.txt') ? readDist('llms.txt') : ''
+check('llms.txt existe y arranca con el nombre', llms.startsWith('# Legales y Humanos'), llms.slice(0, 40))
+check('llms.txt tiene dirección, horario y matrícula', ['Calle 49 n° 876', '08:30 a 16:00', 'T° 63 F° 186'].every((text) => llms.includes(text)), '')
+const llmsQuestions = llms.split('\n').filter((line) => line.startsWith('**¿')).length
+check('llms.txt trae las 12 preguntas frecuentes', llmsQuestions === 12, String(llmsQuestions))
+check('llms.txt enlaza a la web publicada', llms.includes(`${SITE_URL}#contacto`), '')
+
 const head = html.slice(0, html.indexOf('</head>'))
 const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(([, json]) => json)
 const jsonLdInHead = [...head.matchAll(/<script type="application\/ld\+json">/g)].length
