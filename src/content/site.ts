@@ -400,7 +400,7 @@ export const oficina = {
   tour: {
     src: asset('fotos/oficina-recorrido.mp4'),
     poster: asset('fotos/oficina-recorrido-poster.webp'),
-    label: 'Recorrido de 13 segundos por el estudio: la sala de reuniones, los escritorios y el cartel con el logo',
+    label: 'Recorrido de 15 segundos por el estudio: la sala de reuniones con el logo, los escritorios y el cartel de la entrada',
     playLabel: 'Ver recorrido',
     replayLabel: 'Volver a ver',
   },
