@@ -140,18 +140,23 @@ no agrega ninguna dependencia al proyecto.
 
 ## Despliegue
 
-El sitio se publica en **GitHub Pages**: https://colomarina.github.io/legales-y-humanos/
+El sitio se publica en **Cloudflare Pages**, en la cuenta del estudio:
+https://legalesyhumanos.com.ar/
 
-Cada push a `main` dispara `.github/workflows/deploy.yml`, que corre `pnpm build`
-y publica `dist/`. No hace falta commitear `dist/` (está en `.gitignore`).
+Cada push a `main` dispara `.github/workflows/deploy.yml`, que corre `pnpm build` y
+`pnpm check:seo` y sube `dist/` al proyecto `legales-y-humanos` con Wrangler. No hace
+falta commitear `dist/` (está en `.gitignore`).
 
-### Al mover a dominio propio
+El workflow necesita dos secrets del repo: `CLOUDFLARE_API_TOKEN` (token con permiso
+*Cloudflare Pages: Edit* sobre la cuenta del estudio) y `CLOUDFLARE_ACCOUNT_ID`.
 
-Tres lugares atados al subpath de GitHub Pages:
+La dirección vieja, https://colomarina.github.io/legales-y-humanos/, sigue publicada en
+GitHub Pages solo con una página que redirige al dominio, armada por
+`scripts/github-pages-redirect.mjs`. `public/_headers` marca `noindex` en las URL
+`*.pages.dev` para que Google indexe solo el dominio.
 
-1. `vite.config.ts` → `base: '/legales-y-humanos/'` pasa a `base: '/'`.
-2. `index.html` → las URL absolutas de `og:image` y `og:url`.
-3. Un archivo `public/CNAME` con el dominio, más los registros DNS.
+Todas las URL absolutas (canonical, Open Graph, sitemap, robots, JSON-LD, llms.txt) y
+el `base` de Vite salen de `SITE_URL`, en `src/content/siteUrl.ts`.
 
 ---
 
