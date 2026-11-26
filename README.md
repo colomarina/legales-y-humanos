@@ -140,20 +140,22 @@ no agrega ninguna dependencia al proyecto.
 
 ## Despliegue
 
-El sitio se publica en **Cloudflare Pages**, en la cuenta del estudio:
-https://legalesyhumanos.com.ar/
+El sitio se publica como Worker de Cloudflare con assets estáticos, en la cuenta del
+estudio: https://legalesyhumanos.com.ar/
 
 Cada push a `main` dispara `.github/workflows/deploy.yml`, que corre `pnpm build` y
-`pnpm check:seo` y sube `dist/` al proyecto `legales-y-humanos` con Wrangler. No hace
-falta commitear `dist/` (está en `.gitignore`).
+`pnpm check:seo` y sube `dist/` con `wrangler deploy`. La configuración está en
+`wrangler.jsonc`: el Worker `legales-y-humanos` atiende `legalesyhumanos.com.ar` y
+`www.legalesyhumanos.com.ar`, sin URL `*.workers.dev` ni de vista previa, así Google
+indexa solo el dominio. No hace falta commitear `dist/` (está en `.gitignore`).
 
-El workflow necesita dos secrets del repo: `CLOUDFLARE_API_TOKEN` (token con permiso
-*Cloudflare Pages: Edit* sobre la cuenta del estudio) y `CLOUDFLARE_ACCOUNT_ID`.
+El workflow necesita dos secrets del repo: `CLOUDFLARE_API_TOKEN` (token creado con la
+plantilla *Edit Cloudflare Workers* sobre la cuenta y la zona del estudio) y
+`CLOUDFLARE_ACCOUNT_ID`.
 
 La dirección vieja, https://colomarina.github.io/legales-y-humanos/, sigue publicada en
 GitHub Pages solo con una página que redirige al dominio, armada por
-`scripts/github-pages-redirect.mjs`. `public/_headers` marca `noindex` en las URL
-`*.pages.dev` para que Google indexe solo el dominio.
+`scripts/github-pages-redirect.mjs`.
 
 Todas las URL absolutas (canonical, Open Graph, sitemap, robots, JSON-LD, llms.txt) y
 el `base` de Vite salen de `SITE_URL`, en `src/content/siteUrl.ts`.

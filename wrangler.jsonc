@@ -1,0 +1,13 @@
+{
+  "name": "legales-y-humanos",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist"
+  },
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "legalesyhumanos.com.ar", "custom_domain": true },
+    { "pattern": "www.legalesyhumanos.com.ar", "custom_domain": true }
+  ]
+}
