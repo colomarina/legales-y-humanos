@@ -36,3 +36,5 @@ const sitemap = [
   '',
 ].join('\n')
 writeFileSync('dist/sitemap.xml', sitemap)
+
+writeFileSync('dist/llms.txt', server.buildLlmsTxt())
