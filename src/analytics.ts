@@ -1,6 +1,6 @@
 import { contactChannels, type ContactChannel } from '@/content/site'
 
-export const GA_MEASUREMENT_ID: string = ''
+export const GA_MEASUREMENT_ID: string = 'G-WMCTVDV41G'
 
 export const analyticsEnabled = GA_MEASUREMENT_ID !== ''
 
